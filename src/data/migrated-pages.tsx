@@ -11,8 +11,8 @@ type ContentSection = {
 };
 type MigratedPage = {
   intro: string;
-  cards?: { title: string; description: string; href: string; meta?: string }[];
-  profile?: { initials: string; role: string; experience: string; specialties: string[] };
+  cards?: { title: string; description: string; href: string; meta?: string; image?: string }[];
+  profile?: { initials: string; role: string; experience: string; specialties: string[]; image?: string };
   highlights?: { title: string; description: string; mark: string }[];
   action?: { title: string; description: string; label: string; href: string };
   sections?: ContentSection[];
@@ -209,10 +209,10 @@ export const MIGRATED_PAGES: Partial<Record<PageContentKey, MigratedPage>> = {
       { mark: "03", title: "Персональный подход", description: "Рекомендации с учётом возраста, состояния и истории здоровья ребёнка" },
     ],
     cards: [
-      { title: "Садовникова Елена Геннадьевна", meta: "Педиатр · аллерголог", description: "Ведение детей с рождения, педиатрическая помощь и консультации по аллергологическим вопросам.", href: "/doctors/sadovnikova-elena-gennadevna/" },
-      { title: "Петухова Ольга Викторовна", meta: "Главный врач · педиатр", description: "Педиатрическое наблюдение, вопросы вскармливания и помощь при заболеваниях желудочно-кишечного тракта.", href: "/doctors/petuhova-olga-viktorovna/" },
-      { title: "Шевченко Анастасия Николаевна", meta: "Педиатр · неонатолог", description: "Наблюдение детей первого года жизни, вопросы питания, прикорма и профилактики заболеваний.", href: "/doctors/shevchenko-anastasiya-nikolaevna/" },
-      { title: "Остроухова Наталья Петровна", meta: "Педиатр", description: "Наблюдение детей с рождения, диагностика и лечение острых и хронических заболеваний детского возраста.", href: "/doctors/ostrouhova-natalya-petrovna/" },
+      { image: "https://aibolit70.ru/assets/img/Sadovnikova_Elena_Gennadevna.db0177a290870cb2e56d.jpg", title: "Садовникова Елена Геннадьевна", meta: "Педиатр · аллерголог", description: "Ведение детей с рождения, педиатрическая помощь и консультации по аллергологическим вопросам.", href: "/doctors/sadovnikova-elena-gennadevna/" },
+      { image: "https://aibolit70.ru/assets/img/Petuhova_Olga_Viktorovna.76ebfef56dfbc70d4541.jpg", title: "Петухова Ольга Викторовна", meta: "Главный врач · педиатр", description: "Педиатрическое наблюдение, вопросы вскармливания и помощь при заболеваниях желудочно-кишечного тракта.", href: "/doctors/petuhova-olga-viktorovna/" },
+      { image: "https://aibolit70.ru/assets/img/Shevchenko_Anastasiya_Nikolaevna.2662c04317fcef503443.jpg", title: "Шевченко Анастасия Николаевна", meta: "Педиатр · неонатолог", description: "Наблюдение детей первого года жизни, вопросы питания, прикорма и профилактики заболеваний.", href: "/doctors/shevchenko-anastasiya-nikolaevna/" },
+      { image: "https://aibolit70.ru/assets/img/Ostrouhova_Natalya_Petrovna.8b4a4e6874c952e50656.jpg", title: "Остроухова Наталья Петровна", meta: "Педиатр", description: "Наблюдение детей с рождения, диагностика и лечение острых и хронических заболеваний детского возраста.", href: "/doctors/ostrouhova-natalya-petrovna/" },
     ],
     sections: [
       { heading: "Как выбрать врача", paragraphs: ["При выборе педиатра учитывайте возраст ребёнка, повод обращения и то, нужен ли вам плановый приём, наблюдение или выезд на дом. Администратор поможет уточнить доступность специалиста и подобрать удобное время."] },
@@ -222,7 +222,7 @@ export const MIGRATED_PAGES: Partial<Record<PageContentKey, MigratedPage>> = {
   },
   DoctorSadovnikova: {
     intro: "Педиатр и аллерголог. Приём детей с рождения, наблюдение за состоянием здоровья, помощь при острых заболеваниях и аллергических проявлениях.",
-    profile: { initials: "ЕС", role: "Генеральный директор · врач-педиатр · врач-аллерголог", experience: "В медицине с 1992 года", specialties: ["Педиатрия", "Аллергология и иммунология", "Наблюдение детей с рождения", "Консультации и выезд на дом"] },
+    profile: { initials: "ЕС", image: "https://aibolit70.ru/assets/img/Sadovnikova_Elena_Gennadevna.db0177a290870cb2e56d.jpg", role: "Генеральный директор · врач-педиатр · врач-аллерголог", experience: "В медицине с 1992 года", specialties: ["Педиатрия", "Аллергология и иммунология", "Наблюдение детей с рождения", "Консультации и выезд на дом"] },
     sections: [
       { heading: "Направления работы", bullets: ["Диагностика и лечение острых заболеваний детского возраста", "Оценка состояния ребёнка перед вакцинацией и составление индивидуального графика прививок", "Консультации по грудному и искусственному вскармливанию", "Аллергический и сезонный ринит, аллергический конъюнктивит, крапивница, атопический дерматит и бронхиальная астма", "Кожные аллергологические тесты и аллерген-специфическая иммунотерапия — по медицинским показаниям", "Наблюдение часто болеющих детей и пациентов с хроническими состояниями"] },
       { heading: "Образование", bullets: ["1992 — Сибирский государственный медицинский университет, специальность «Педиатрия»", "2002 — повышение квалификации по педиатрии", "2007 — повышение квалификации по аллергологии и иммунологии", "2011 — профессиональная переподготовка по педиатрии"] },
@@ -232,7 +232,7 @@ export const MIGRATED_PAGES: Partial<Record<PageContentKey, MigratedPage>> = {
   },
   DoctorPetuhova: {
     intro: "Главный врач детской медицинской службы «Айболит», врач-педиатр. Ведёт детей с рождения, консультирует по вопросам вскармливания и занимается диагностикой заболеваний органов пищеварения.",
-    profile: { initials: "ОП", role: "Главный врач · врач-педиатр", experience: "В медицине с 1997 года", specialties: ["Педиатрия", "Заболевания желудочно-кишечного тракта", "Вскармливание детей", "Выезд на дом"] },
+    profile: { initials: "ОП", image: "https://aibolit70.ru/assets/img/Petuhova_Olga_Viktorovna.76ebfef56dfbc70d4541.jpg", role: "Главный врач · врач-педиатр", experience: "В медицине с 1997 года", specialties: ["Педиатрия", "Заболевания желудочно-кишечного тракта", "Вскармливание детей", "Выезд на дом"] },
     sections: [
       { heading: "Направления работы", bullets: ["Диагностика и лечение острых заболеваний у детей", "Осмотр и наблюдение пациентов с рождения", "Оценка состояния перед вакцинацией и индивидуальный график прививок", "Консультации по грудному и искусственному вскармливанию", "Заболевания кишечника, гастрит, язвенная болезнь и гастроэзофагеальная рефлюксная болезнь", "Заболевания желчевыводящих путей, желчного пузыря и поджелудочной железы", "Хронические запоры и паразитарные заболевания кишечника"] },
       { heading: "Образование", bullets: ["1997 — Сибирский государственный медицинский университет, специальность «Педиатрия»", "2013 — профессиональная переподготовка по организации здравоохранения и общественному здоровью", "2014 — повышение квалификации по педиатрии"] },
@@ -242,7 +242,7 @@ export const MIGRATED_PAGES: Partial<Record<PageContentKey, MigratedPage>> = {
   },
   DoctorShevchenko: {
     intro: "Врач-педиатр и неонатолог. Наблюдает детей с рождения, помогает родителям с вопросами ухода, питания, прикорма и профилактики заболеваний.",
-    profile: { initials: "АШ", role: "Врач-педиатр · врач-неонатолог", experience: "В медицине с 1992 года", specialties: ["Неонатология", "Наблюдение детей первого года жизни", "Вскармливание и прикорм", "Иммунопрофилактика"] },
+    profile: { initials: "АШ", image: "https://aibolit70.ru/assets/img/Shevchenko_Anastasiya_Nikolaevna.2662c04317fcef503443.jpg", role: "Врач-педиатр · врач-неонатолог", experience: "В медицине с 1992 года", specialties: ["Неонатология", "Наблюдение детей первого года жизни", "Вскармливание и прикорм", "Иммунопрофилактика"] },
     sections: [
       { heading: "Профессиональные навыки", bullets: ["Осмотр и наблюдение детей от 0 до 18 лет", "Диагностика и лечение острых заболеваний", "Наблюдение детей с хроническими заболеваниями", "Контроль состояния ребёнка первого года жизни", "Рекомендации по рациональному вскармливанию и подбору питания", "Определение тактики вакцинации и составление индивидуального графика прививок", "Выезд врача на дом"] },
       { heading: "Образование", bullets: ["1992 — Сибирский государственный медицинский университет, специальность «Педиатрия»", "2020 — обучение по мерам предупреждения распространения коронавирусной инфекции"] },
@@ -252,7 +252,7 @@ export const MIGRATED_PAGES: Partial<Record<PageContentKey, MigratedPage>> = {
   },
   DoctorOstrouhova: {
     intro: "Врач-педиатр. Проводит наблюдение детей с рождения, консультирует по вопросам здоровья и развития, занимается диагностикой и лечением острых и хронических заболеваний детского возраста.",
-    profile: { initials: "НО", role: "Врач-педиатр · остеопатические техники", experience: "В медицине с 1993 года", specialties: ["Педиатрия с 0 до 18 лет", "Профилактические осмотры", "Вакцинация", "Остеопатические техники"] },
+    profile: { initials: "НО", image: "https://aibolit70.ru/assets/img/Ostrouhova_Natalya_Petrovna.8b4a4e6874c952e50656.jpg", role: "Врач-педиатр · остеопатические техники", experience: "В медицине с 1993 года", specialties: ["Педиатрия с 0 до 18 лет", "Профилактические осмотры", "Вакцинация", "Остеопатические техники"] },
     sections: [
       { heading: "Направления работы", bullets: ["Диагностика и лечение острых заболеваний: ринит, конъюнктивит, фарингит, тонзиллит, ларингит, трахеит, бронхит, пневмония и другие состояния", "Осмотр и ведение пациентов с рождения", "Оценка состояния перед вакцинацией и составление индивидуального графика прививок", "Консультации по грудному и искусственному вскармливанию", "Наблюдение детей с острыми и хроническими заболеваниями", "Выезд врача на дом"] },
       { heading: "Образование", bullets: ["1993 — Сибирский государственный медицинский университет, специальность «Педиатрия»", "2012 — повышение квалификации по педиатрии", "2023 — Институт остеопатической медицины им. В. Л. Андриянова, повышение квалификации «Основы остеопатии»"] },
@@ -341,7 +341,7 @@ export function MigratedPageContent({ pageKey }: { pageKey: PageContentKey }) {
 
       {page.profile && (
         <section className="content-profile">
-          <div className="content-profile__avatar" aria-hidden="true">{page.profile.initials}</div>
+          {page.profile.image ? <img className="content-profile__photo" src={page.profile.image} alt={pageKey === "DoctorSadovnikova" ? "Садовникова Елена Геннадьевна" : pageKey === "DoctorPetuhova" ? "Петухова Ольга Викторовна" : pageKey === "DoctorShevchenko" ? "Шевченко Анастасия Николаевна" : "Остроухова Наталья Петровна"} /> : <div className="content-profile__avatar" aria-hidden="true">{page.profile.initials}</div>}
           <div className="content-profile__info">
             <p className="content-profile__role">{page.profile.role}</p>
             <p className="content-profile__experience">{page.profile.experience}</p>
@@ -354,7 +354,7 @@ export function MigratedPageContent({ pageKey }: { pageKey: PageContentKey }) {
         <div className="content-cards">
           {page.cards.map((card, index) => (
             <Link className="content-card" href={card.href} key={card.href}>
-              <span className="content-card__index">{String(index + 1).padStart(2, "0")}</span>
+              {card.image ? <img className="content-card__photo" src={card.image} alt="" loading="lazy" /> : <span className="content-card__index">{String(index + 1).padStart(2, "0")}</span>}
               {card.meta && <span className="content-card__meta">{card.meta}</span>}
               <h2>{card.title}</h2>
               <p>{card.description}</p>
