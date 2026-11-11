@@ -8,15 +8,6 @@ import { Clock3, MapPin, Menu, Phone, X, ChevronRight } from "lucide-react";
 import { MAIN_NAVIGATION } from "@/config/navigation";
 import { PHONE_HREF, SITE_ADDRESS, SITE_HOURS, SITE_LOGO, SITE_PHONE } from "@/config/site";
 
-const navigation = [
-  { href: "/o-nas/", label: "О нас" },
-  { href: "/uslugi-i-ceny/", label: "Услуги" },
-  { href: "/doctors/", label: "Врачи" },
-  { href: "/uslugi-i-ceny/", label: "Цены" },
-  { href: "/otzyvy/", label: "Отзывы" },
-  { href: "/kontakty/", label: "Контакты" },
-];
-
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
@@ -103,7 +94,7 @@ export function SiteHeader() {
         <div className="topline">
           <div className="container topline-inner">
             <span><MapPin size={15} /> г. {SITE_ADDRESS.city}, {SITE_ADDRESS.street}</span>
-            <a href={PHONE_HREF}><Phone size={15} /> +7 (3822) 60-92-43</a>
+            <a href={PHONE_HREF}><Phone size={15} /> {SITE_PHONE}</a>
             <span className="hours"><Clock3 size={15} /> {SITE_HOURS.weekdays} · {SITE_HOURS.saturday}</span>
           </div>
         </div>
