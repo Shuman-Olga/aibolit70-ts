@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { SITE_ADDRESS, SITE_FULL_NAME, SITE_PHONE } from "@/lib/site";
+import { ROUTES } from "@/config/paths";
+import { PHONE_HREF, SITE_ADDRESS, SITE_FULL_NAME, SITE_PHONE } from "@/config/site";
 
 export function SiteFooter() {
   return (
@@ -12,14 +13,14 @@ export function SiteFooter() {
         </div>
         <div>
           <strong>Контакты</strong>
-          <p><a href={`tel:${SITE_PHONE.replace(/[^+0-9]/g, "")}`}>{SITE_PHONE}</a></p>
+          <p><a href={PHONE_HREF}>{SITE_PHONE}</a></p>
           <p>{SITE_ADDRESS.street}, {SITE_ADDRESS.city}</p>
         </div>
         <div>
           <strong>Разделы</strong>
-          <p><Link href="/uslugi-i-ceny/">Услуги</Link></p>
-          <p><Link href="/doctors/">Врачи</Link></p>
-          <p><Link href="/o-nas/map-site/">Карта сайта</Link></p>
+          <p><Link href={ROUTES.services}>Услуги</Link></p>
+          <p><Link href={ROUTES.doctors}>Врачи</Link></p>
+          <p><Link href={ROUTES.siteMap}>Карта сайта</Link></p>
         </div>
       </div>
       <div className="container footer-bottom">© Айболит · Томск</div>
