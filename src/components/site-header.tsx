@@ -1,6 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Clock3, MapPin, Phone } from "lucide-react";
+import { Clock3, MapPin, Menu, Phone, X } from "lucide-react";
 import { SITE_PHONE } from "@/lib/site";
 
 const navigation = [
@@ -13,6 +16,10 @@ const navigation = [
 ];
 
 export function SiteHeader() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="site-header">
       <div className="topline">
@@ -28,8 +35,9 @@ export function SiteHeader() {
           </span>
         </div>
       </div>
+
       <div className="container header-main">
-        <Link className="brand" href="/" aria-label="Айболит — главная">
+        <Link className="brand" href="/" aria-label="Айболит — главная" onClick={closeMenu}>
           <Image
             src="https://aibolit70.ru/assets/img/aibolit_logo.8b947efb21c1e40192ec.png"
             alt="Айболит — детская медицинская служба"
@@ -40,18 +48,53 @@ export function SiteHeader() {
             className="brand__logo"
           />
         </Link>
-        <nav className="main-nav" aria-label="Основная навигация">
+
+        <nav className="main-nav" id="main-navigation" aria-label="Основная навигация">
           {navigation.map((item) => (
-            <Link key={`${item.href}-${item.label}`} href={item.href}>
+            <Link
+              key={`${item.href}-${item.label}`}
+              href={item.href}
+              onClick={closeMenu}
+            >
               {item.label}
             </Link>
           ))}
         </nav>
+
         <a
           className="phone-link"
-          href={`tel:${SITE_PHONE.replace(/[^+0-9]/g, "")}`}>
+          href={`tel:${SITE_PHONE.replace(/[^+0-9]/g, "")}`}
+        >
           <span aria-hidden="true">☎</span> {SITE_PHONE}
         </a>
+
+        <button
+          className="mobile-menu-toggle"
+          type="button"
+          aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
+          aria-expanded={menuOpen}
+          aria-controls="main-navigation"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? <X size={25} /> : <Menu size={25} />}
+          <span>{menuOpen ? "Закрыть" : "Меню"}</span>
+        </button>
+
+        <div
+          className={`mobile-nav-panel${menuOpen ? " is-open" : ""}`}
+          aria-hidden={!menuOpen}
+        >
+          {navigation.map((item) => (
+            <Link
+              key={`mobile-${item.href}-${item.label}`}
+              href={item.href}
+              tabIndex={menuOpen ? 0 : -1}
+              onClick={closeMenu}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </header>
   );
