@@ -122,7 +122,7 @@ export function SiteHeader() {
 
           <a
             className="phone-link"
-            href={`tel:${SITE_PHONE.replace(/[^+0-9]/g, "")}`}
+            href={PHONE_HREF}
           >
             <span aria-hidden="true">☎</span> {SITE_PHONE}
           </a>
