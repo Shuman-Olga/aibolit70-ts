@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { SiteRoute } from "@/types/content";
-import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
+import { DEFAULT_OG_IMAGE, SITE_FULL_NAME, SITE_NAME, SITE_PHONE, SITE_SOCIAL, SITE_ADDRESS, SITE_URL } from "@/config/site";
 
 export function createPageMetadata(route: SiteRoute): Metadata {
   const canonical = new URL(route.path, SITE_URL).toString();
@@ -33,16 +33,16 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
-    name: "Детская медицинская служба «Айболит»",
+    name: SITE_FULL_NAME,
     url: SITE_URL,
-    telephone: "+7 (3822) 60-92-43",
+    telephone: SITE_PHONE,
     image: new URL(DEFAULT_OG_IMAGE, SITE_URL).toString(),
     address: {
       "@type": "PostalAddress",
-      streetAddress: "ул. Герцена 68, строение 2",
-      addressLocality: "Томск",
-      addressCountry: "RU",
+      streetAddress: SITE_ADDRESS.street,
+      addressLocality: SITE_ADDRESS.city,
+      addressCountry: SITE_ADDRESS.country,
     },
-    sameAs: ["https://vk.com/aibolittomsk"],
+    sameAs: [...SITE_SOCIAL],
   };
 }
