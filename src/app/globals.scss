@@ -612,3 +612,112 @@ h3 {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* Collapsible navigation on small screens */
+.mobile-menu-toggle,
+.mobile-nav-panel {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .header-main {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 42px;
+    padding: 8px 11px;
+    border: 1px solid #cfe3d7;
+    border-radius: 12px;
+    background: #f2f8f4;
+    color: var(--green-dark);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .mobile-nav-panel {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-rows: 0fr;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    border: 0 solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(32, 67, 52, 0.08);
+    transition: max-height 220ms ease, opacity 180ms ease,
+      visibility 180ms ease, padding 220ms ease, border-width 220ms ease;
+  }
+
+  .mobile-nav-panel.is-open {
+    max-height: 360px;
+    visibility: visible;
+    opacity: 1;
+    gap: 2px;
+    padding: 8px;
+    border-width: 1px;
+  }
+
+  .mobile-nav-panel a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 9px 13px;
+    border-radius: 10px;
+    color: #40564b;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .mobile-nav-panel a:active {
+    background: var(--mint);
+  }
+}
+
+@media (max-width: 380px) {
+  .header-main {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .mobile-menu-toggle {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+  }
+
+  .phone-link {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .mobile-nav-panel {
+    grid-row: 3;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mobile-menu-toggle:hover {
+    border-color: #9bcbb0;
+    background: #e7f4ec;
+    transform: translateY(-1px);
+  }
+
+  .mobile-nav-panel a:hover {
+    background: #f0f7f2;
+    color: var(--green-dark);
+  }
+}
