@@ -67,8 +67,21 @@ export function normalizeRoutePath(path: string): string {
   return `/${path.replace(/^\/+|\/+$/g, "")}/`;
 }
 
-export function getRouteBySlug(slug: string[]): SiteRoute | undefined {
-  return routeByPath.get(normalizeRoutePath(slug.join("/")));
+/** Resolve a URL path regardless of leading/trailing slashes. */
+export function getRouteByPath(path: string): SiteRoute | undefined {
+  return routeByPath.get(normalizeRoutePath(path));
+}
+
+/** Resolve the Next.js catch-all route segments. */
+export function getRouteBySlug(slug: readonly string[]): SiteRoute | undefined {
+  return getRouteByPath(slug.join("/"));
+}
+
+/** Parameters for statically generating every registered non-home page. */
+export function getStaticRouteParams(): { slug: string[] }[] {
+  return routes
+    .filter((route) => route.path !== "/")
+    .map((route) => ({ slug: route.path.split("/").filter(Boolean) }));
 }
 
 export function getBreadcrumbs(route: SiteRoute) {
