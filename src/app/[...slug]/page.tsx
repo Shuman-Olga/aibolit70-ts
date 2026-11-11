@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PageContent } from "@/components/page-content";
-import { getBreadcrumbs, getRouteBySlug, routes } from "@/lib/routes";
+import { getBreadcrumbs, getRouteBySlug, getStaticRouteParams } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ slug: string[] }> };
