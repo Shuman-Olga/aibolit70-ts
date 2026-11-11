@@ -9,6 +9,8 @@ export const ROUTES = {
   patients: "/pacientam/",
   blog: "/blog/",
   siteMap: "/o-nas/map-site/",
+  pediatricianHome: "/uslugi-i-ceny/vyzov-pediatra-na-dom/",
+  observationPrograms: "/programmy-nablyudeniya-za-zdorovem/",
 } as const;
 
 export type RouteKey = keyof typeof ROUTES;
