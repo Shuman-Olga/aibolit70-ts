@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
-import { SITE_PHONE } from "@/lib/site";
+import { PHONE_HREF, SITE_PHONE } from "@/config/site";
+import { HOME_FEATURES, HOME_SERVICES } from "@/data/home";
 import styles from "./home.module.scss";
 
-const phoneHref = `tel:${SITE_PHONE.replace(/[^+0-9]/g, "")}`;
+const phoneHref = PHONE_HREF;
 const homeTitle =
   "Вызов педиатра на дом в Томске — детская медицинская служба «Айболит»";
 const homeDescription =
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     url: "https://aibolit70.ru/",
     images: [
       {
-        url: "/chick-doctor-scene.webp",
+        url: "/chick-doctor-scene.png",
         width: 972,
         height: 615,
         alt: "Иллюстрация цыплёнка-врача с плюшевым мишкой",
@@ -142,7 +143,7 @@ export default function HomePage() {
 
         <div className={`container ${styles.featureWrap}`}>
           <ul className={styles.features}>
-            {features.map((feature) => (
+            {HOME_FEATURES.map((feature) => (
               <li key={feature.title}>
                 <span
                   className={`${styles.featureIcon} ${feature.tone === "yellow" ? styles.yellow : ""}`}
@@ -175,7 +176,7 @@ export default function HomePage() {
           </p>
         </div>
         <div className={styles.serviceGrid}>
-          {services.map((service) => (
+          {HOME_SERVICES.map((service) => (
             <article className={styles.serviceCard} key={service.title}>
               <span className={styles.serviceIcon} aria-hidden="true">
                 {service.icon}
