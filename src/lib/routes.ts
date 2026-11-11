@@ -58,9 +58,21 @@ export const routes: SiteRoute[] = [
   { path: "/search/", component: "SearchPage", crumb: "Поиск", title: "Поиск по сайту | Айболит", description: "Поиск информации на сайте детской медицинской службы «Айболит»." }
 ];
 
-export const routeByPath = new Map(
-  routes.map((route) => [normalizeRoutePath(route.path), route]),
-);
+function createRouteIndex(items: readonly SiteRoute[]): Map<string, SiteRoute> {
+  const index = new Map<string, SiteRoute>();
+
+  for (const route of items) {
+    const path = normalizeRoutePath(route.path);
+    if (index.has(path)) {
+      throw new Error(`Duplicate route path detected: ${path}`);
+    }
+    index.set(path, route);
+  }
+
+  return index;
+}
+
+export const routeByPath = createRouteIndex(routes);
 
 export function normalizeRoutePath(path: string): string {
   if (!path || path === "/") return "/";
