@@ -78,7 +78,7 @@ export function getBreadcrumbs(route: SiteRoute) {
     const currentRoute = routeByPath.get(currentPath);
     return {
       label: currentRoute?.crumb ?? segment.replaceAll("-", " "),
-      href: index === segments.length - 1 ? undefined : currentPath,
+      href: index < segments.length - 1 && currentRoute ? currentPath : undefined,
     };
   });
 }
