@@ -5,7 +5,8 @@ import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock3, MapPin, Menu, Phone, X, ChevronRight } from "lucide-react";
-import { SITE_PHONE } from "@/lib/site";
+import { MAIN_NAVIGATION } from "@/config/navigation";
+import { PHONE_HREF, SITE_ADDRESS, SITE_HOURS, SITE_LOGO, SITE_PHONE } from "@/config/site";
 
 const navigation = [
   { href: "/o-nas/", label: "О нас" },
@@ -69,7 +70,7 @@ export function SiteHeader() {
               </div>
 
               <div className="mobile-nav-links">
-                {navigation.map((item) => (
+                {MAIN_NAVIGATION.map((item) => (
                   <Link
                     key={`mobile-${item.href}-${item.label}`}
                     href={item.href}
@@ -83,7 +84,7 @@ export function SiteHeader() {
 
               <a
                 className="mobile-nav-phone"
-                href={`tel:${SITE_PHONE.replace(/[^+0-9]/g, "")}`}
+                href={PHONE_HREF}
               >
                 <Phone size={18} /> {SITE_PHONE}
               </a>
@@ -101,16 +102,16 @@ export function SiteHeader() {
       <header className="site-header">
         <div className="topline">
           <div className="container topline-inner">
-            <span><MapPin size={15} /> г. Томск, ул. Герцена 68, строение 2</span>
-            <a href="tel:+73822609243"><Phone size={15} /> +7 (3822) 60-92-43</a>
-            <span className="hours"><Clock3 size={15} /> Пн–пт: 08:00–19:00 · Сб: 09:00–14:00</span>
+            <span><MapPin size={15} /> г. {SITE_ADDRESS.city}, {SITE_ADDRESS.street}</span>
+            <a href={PHONE_HREF}><Phone size={15} /> +7 (3822) 60-92-43</a>
+            <span className="hours"><Clock3 size={15} /> {SITE_HOURS.weekdays} · {SITE_HOURS.saturday}</span>
           </div>
         </div>
 
         <div className="container header-main">
           <Link className="brand" href="/" aria-label="Айболит — главная">
             <Image
-              src="https://aibolit70.ru/assets/img/aibolit_logo.8b947efb21c1e40192ec.png"
+              src={SITE_LOGO}
               alt="Айболит — детская медицинская служба"
               width={431}
               height={147}
@@ -121,7 +122,7 @@ export function SiteHeader() {
           </Link>
 
           <nav className="main-nav" aria-label="Основная навигация">
-            {navigation.map((item) => (
+            {MAIN_NAVIGATION.map((item) => (
               <Link key={`${item.href}-${item.label}`} href={item.href}>
                 {item.label}
               </Link>
