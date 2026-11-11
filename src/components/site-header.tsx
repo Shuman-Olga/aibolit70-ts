@@ -27,7 +27,7 @@ export function SiteHeader() {
     document.body.style.overflow = "hidden";
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closeMenu();
+      if (event.key === "Escape") setMenuOpen(false);
     };
 
     document.addEventListener("keydown", onKeyDown);
