@@ -3,31 +3,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
-import { PHONE_HREF, SITE_NAME, SITE_PHONE, SITE_URL } from "@/config/site";
-import { HOME_FEATURES, HOME_SERVICES } from "@/data/home";
+import { PHONE_HREF, SITE, SITE_NAME, SITE_PHONE, SITE_URL } from "@/config/site";
+import { HOME_FEATURES, HOME_SEO, HOME_SERVICES } from "@/data/home";
 import styles from "./home.module.scss";
 
 const phoneHref = PHONE_HREF;
-const homeTitle =
-  "Вызов педиатра на дом в Томске — детская медицинская служба «Айболит»";
-const homeDescription =
-  "Детская медицинская служба «Айболит» в Томске. Вызов педиатра и детских врачей на дом, консультации специалистов и программы наблюдения за здоровьем ребёнка. Работаем с 2001 года.";
-
 export const metadata: Metadata = {
   ...createPageMetadata(routes[0]),
-  title: { absolute: homeTitle },
-  description: homeDescription,
+  title: { absolute: HOME_SEO.title },
+  description: HOME_SEO.description,
   alternates: { canonical: `${SITE_URL}/` },
   openGraph: {
     type: "website",
     locale: "ru_RU",
     siteName: SITE_NAME,
-    title: homeTitle,
-    description: homeDescription,
+    title: HOME_SEO.title,
+    description: HOME_SEO.description,
     url: `${SITE_URL}/`,
     images: [
       {
-        url: "/chick-doctor-scene.png",
+        url: SITE.assets.homeHero,
         width: 972,
         height: 615,
         alt: "Иллюстрация цыплёнка-врача с плюшевым мишкой",
@@ -36,17 +31,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: homeTitle,
-    description: homeDescription,
-    images: ["/chick-doctor-scene.png"],
+    title: HOME_SEO.title,
+    description: HOME_SEO.description,
+    images: [SITE.assets.homeHero],
   },
-  keywords: [
-    "вызов педиатра на дом Томск",
-    "детский врач на дом Томск",
-    "вызвать педиатра Томск",
-    "детская медицинская служба Айболит",
-    "детские врачи Томск",
-  ],
+  keywords: [...HOME_SEO.keywords],
 };
 
 export default function HomePage() {
@@ -99,7 +88,7 @@ export default function HomePage() {
           <div className={styles.illustration}>
             <div className={styles.illustrationHalo} />
             <Image
-              src="/chick-doctor-scene.png"
+              src=SITE.assets.homeHero
               alt="Весёлый цыплёнок в белом халате с фонендоскопом и плюшевым мишкой"
               width={972}
               height={615}
