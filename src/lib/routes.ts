@@ -75,8 +75,9 @@ function createRouteIndex(items: readonly SiteRoute[]): Map<string, SiteRoute> {
 export const routeByPath = createRouteIndex(routes);
 
 export function normalizeRoutePath(path: string): string {
-  if (!path || path === "/") return "/";
-  return `/${path.replace(/^\/+|\/+$/g, "")}/`;
+  const pathname = path.trim().split(/[?#]/, 1)[0].replace(/\/{2,}/g, "/");
+  if (!pathname || pathname === "/") return "/";
+  return `/${pathname.replace(/^\/+|\/+$/g, "")}/`;
 }
 
 /** Resolve a URL path regardless of leading/trailing slashes. */
