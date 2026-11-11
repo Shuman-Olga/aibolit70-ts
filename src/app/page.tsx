@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
-import { PHONE_HREF, SITE_PHONE } from "@/config/site";
+import { PHONE_HREF, SITE_NAME, SITE_PHONE, SITE_URL } from "@/config/site";
 import { HOME_FEATURES, HOME_SERVICES } from "@/data/home";
 import styles from "./home.module.scss";
 
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
   ...createPageMetadata(routes[0]),
   title: { absolute: homeTitle },
   description: homeDescription,
-  alternates: { canonical: "https://aibolit70.ru/" },
+  alternates: { canonical: `${SITE_URL}/` },
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    siteName: "Айболит",
+    siteName: SITE_NAME,
     title: homeTitle,
     description: homeDescription,
-    url: "https://aibolit70.ru/",
+    url: `${SITE_URL}/`,
     images: [
       {
         url: "/chick-doctor-scene.png",
