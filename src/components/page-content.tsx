@@ -8,7 +8,7 @@ export function PageContent({ route }: { route: SiteRoute }) {
       <p className="lead">{route.description}</p>
       <div className="migration-note">
         <strong>Страница подготовлена к переносу.</strong>
-        <p>Здесь будет размещён содержательный блок из старого компонента <code>{route.component}</code>.
+        <p>Здесь будет размещён содержательный блок из старого компонента <code>{route.contentKey}</code>.
           При миграции нужно сохранить полезный текст, изображения, документы, внутренние ссылки и действующие URL.</p>
       </div>
     </article>
