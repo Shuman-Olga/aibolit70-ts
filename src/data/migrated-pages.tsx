@@ -205,12 +205,45 @@ export function MigratedPageContent({ pageKey }: { pageKey: PageContentKey }) {
   const page = MIGRATED_PAGES[pageKey];
   if (!page) return null;
 
+  const isOverview = pageKey === "About" || pageKey === "Uslugi";
+
   return (
-    <div className="migrated-content">
-      <p className="lead">{page.intro}</p>
+    <div className={isOverview ? "migrated-content migrated-content--overview" : "migrated-content"}>
+      <section className="content-hero">
+        <div className="content-hero__copy">
+          <span className="content-hero__eyebrow">Детская медицинская служба · Томск</span>
+          <p className="lead">{page.intro}</p>
+        </div>
+        <span className="content-hero__decor" aria-hidden="true">✳</span>
+      </section>
+
+      {page.highlights && (
+        <div className="content-highlights">
+          {page.highlights.map((item) => (
+            <article className="content-highlight" key={item.mark}>
+              <span className="content-highlight__mark">{item.mark}</span>
+              <h2>{item.title}</h2>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      )}
+
+      {page.action && (
+        <aside className="content-action">
+          <div>
+            <h2>{page.action.title}</h2>
+            <p>{page.action.description}</p>
+          </div>
+          <a className="button button--primary content-action__button" href={page.action.href}>
+            {page.action.label}<span aria-hidden="true">→</span>
+          </a>
+        </aside>
+      )}
+
       {page.sections?.map((section, index) => (
         <section className="content-section" key={section.heading ?? index}>
-          {section.heading && <h2>{section.heading}</h2>}
+          {section.heading && <div className="content-section__heading"><span aria-hidden="true" /> <h2>{section.heading}</h2></div>}
           {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           {section.bullets && (
             <ul>{section.bullets.map((item) => <li key={item}>{item}</li>)}</ul>
