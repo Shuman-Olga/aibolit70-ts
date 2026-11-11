@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
-import { Clock3, MapPin, Menu, Phone, X, ChevronRight } from "lucide-react";
+import { Clock3, MapPin, Menu, Phone, X, ChevronRight, ChevronDown } from "lucide-react";
 import { MAIN_NAVIGATION } from "@/config/navigation";
 import { PHONE_HREF, SITE_ADDRESS, SITE_HOURS, SITE_LOGO, SITE_PHONE } from "@/config/site";
 
@@ -62,14 +62,28 @@ export function SiteHeader() {
 
               <div className="mobile-nav-links">
                 {MAIN_NAVIGATION.map((item) => (
-                  <Link
-                    key={`mobile-${item.href}-${item.label}`}
-                    href={item.href}
-                    onClick={closeMenu}
-                  >
-                    <span>{item.label}</span>
-                    <ChevronRight size={19} aria-hidden="true" />
-                  </Link>
+                  <div className="mobile-nav-group" key={`mobile-${item.href}-${item.label}`}>
+                    {item.children ? (
+                      <details className="mobile-nav-dropdown">
+                        <summary>
+                          <span>{item.label}</span>
+                          <ChevronDown size={18} aria-hidden="true" />
+                        </summary>
+                        <div className="mobile-nav-submenu">
+                          {item.children.map((child) => (
+                            <Link key={child.href} href={child.href} onClick={closeMenu}>
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </details>
+                    ) : (
+                      <Link href={item.href} onClick={closeMenu}>
+                        <span>{item.label}</span>
+                        <ChevronRight size={19} aria-hidden="true" />
+                      </Link>
+                    )}
+                  </div>
                 ))}
               </div>
 
@@ -114,9 +128,19 @@ export function SiteHeader() {
 
           <nav className="main-nav" aria-label="Основная навигация">
             {MAIN_NAVIGATION.map((item) => (
-              <Link key={`${item.href}-${item.label}`} href={item.href}>
-                {item.label}
-              </Link>
+              <div className={item.children ? "main-nav-item has-dropdown" : "main-nav-item"} key={`${item.href}-${item.label}`}>
+                <Link href={item.href}>
+                  {item.label}
+                  {item.children && <ChevronDown size={14} aria-hidden="true" />}
+                </Link>
+                {item.children && (
+                  <div className="main-nav-dropdown">
+                    {item.children.map((child) => (
+                      <Link key={child.href} href={child.href}>{child.label}</Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
