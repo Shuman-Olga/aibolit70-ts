@@ -669,3 +669,220 @@
     justify-content: space-between;
   }
 }
+
+
+/* Homepage interaction and small-screen refinements */
+@media (hover: hover) and (pointer: fine) {
+  .secondary,
+  .phoneNote a,
+  .serviceCard,
+  .serviceCard a {
+    transition:
+      color 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      transform 180ms ease;
+  }
+  .secondary:hover {
+    color: #0e665b;
+    border-color: #58b99b;
+    background: #f5fcf8;
+  }
+  .phoneNote a:hover,
+  .serviceCard a:hover {
+    color: #0b665b;
+  }
+  .serviceCard:hover {
+    transform: translateY(-5px);
+    border-color: #b8dfcf;
+    box-shadow: 0 18px 42px rgba(41, 103, 79, 0.11);
+  }
+}
+.serviceCard a:focus-visible,
+.phoneNote a:focus-visible {
+  outline: 3px solid #e8b94d;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+@media (max-width: 720px) {
+  .hero {
+    padding: 0 0 28px;
+  }
+  .heroInner {
+    width: min(100% - 32px, 560px);
+  }
+  .copy {
+    padding-top: 26px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.09em;
+    line-height: 1.5;
+  }
+  .copy h1 {
+    max-width: 540px;
+    margin-bottom: 16px;
+    font-size: clamp(36px, 9.4vw, 54px);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+  .lead {
+    max-width: 560px;
+    font-size: clamp(15px, 4vw, 17px);
+    line-height: 1.55;
+  }
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .primary,
+  .secondary {
+    min-width: 0;
+    min-height: 58px;
+    padding: 10px 13px;
+    gap: 8px;
+    font-size: 13px;
+  }
+  .primary > span:first-child,
+  .primary > span:last-child,
+  .secondary > span:last-child {
+    font-size: 20px;
+  }
+  .secondary {
+    border-width: 1px;
+  }
+  .doctorIcon {
+    font-size: 24px;
+  }
+  .phoneNote {
+    margin-top: 14px;
+    font-size: 12px;
+  }
+  .illustration {
+    min-height: 0;
+    height: auto;
+    margin: 0 -8px -4px;
+  }
+  .chickImage {
+    width: 100%;
+    max-height: min(78vw, 340px);
+    object-fit: contain;
+  }
+  .illustrationHalo {
+    width: 78%;
+  }
+  .features {
+    width: min(100% - 32px, 560px);
+    margin-inline: auto;
+    padding: 8px;
+  }
+  .features li {
+    min-width: 0;
+    gap: 9px;
+    padding: 11px 7px;
+    font-size: 11px;
+  }
+  .features strong {
+    font-size: 12px;
+  }
+  .featureIcon {
+    flex-basis: 42px;
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+  }
+  .services {
+    width: min(100% - 32px, 560px);
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+  .sectionHeading {
+    margin-bottom: 26px;
+    text-align: left;
+  }
+  .sectionHeading h2 {
+    font-size: clamp(27px, 7vw, 36px);
+  }
+  .sectionHeading h2 br {
+    display: none;
+  }
+  .sectionHeading > p:last-child {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .serviceGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .serviceCard {
+    padding: 21px;
+    border-radius: 20px;
+  }
+  .serviceIcon {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 14px;
+    font-size: 24px;
+  }
+  .serviceCard h3 {
+    font-size: 19px;
+  }
+  .serviceCard p {
+    margin-bottom: 13px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .serviceCard a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding-block: 7px;
+  }
+  .bottomCta {
+    padding: 36px 0;
+  }
+  .bottomCtaInner {
+    width: min(100% - 32px, 560px);
+    align-items: stretch;
+    gap: 20px;
+  }
+  .bottomCta h2 {
+    font-size: 25px;
+    line-height: 1.15;
+  }
+  .bottomCta p:not(.eyebrow) {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .bottomCta .primary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media (max-width: 390px) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
+  .primary,
+  .secondary {
+    justify-content: center;
+  }
+  .illustration {
+    margin-inline: -14px;
+  }
+  .features li {
+    gap: 7px;
+    padding-inline: 5px;
+    font-size: 10px;
+  }
+  .featureIcon {
+    flex-basis: 38px;
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+}
