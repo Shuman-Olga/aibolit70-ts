@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Clock3, MapPin, Menu, Phone, X } from "lucide-react";
+import { Clock3, MapPin, Menu, Phone, X, ChevronRight } from "lucide-react";
 import { SITE_PHONE } from "@/lib/site";
 
 const navigation = [
@@ -17,22 +17,29 @@ const navigation = [
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMenu();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen]);
 
   return (
     <header className="site-header">
       <div className="topline">
         <div className="container topline-inner">
-          <span>
-            <MapPin size={15} /> г. Томск, ул. Герцена 68, строение 2
-          </span>
-          <a href="tel:+73822609243">
-            <Phone size={15} /> +7 (3822) 60-92-43
-          </a>
-          <span className="hours">
-            <Clock3 size={15} /> Пн–пт: 08:00–19:00 · Сб: 09:00–14:00
-          </span>
+          <span><MapPin size={15} /> г. Томск, ул. Герцена 68, строение 2</span>
+          <a href="tel:+73822609243"><Phone size={15} /> +7 (3822) 60-92-43</a>
+          <span className="hours"><Clock3 size={15} /> Пн–пт: 08:00–19:00 · Сб: 09:00–14:00</span>
         </div>
       </div>
 
@@ -49,22 +56,13 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav className="main-nav" id="main-navigation" aria-label="Основная навигация">
+        <nav className="main-nav" aria-label="Основная навигация">
           {navigation.map((item) => (
-            <Link
-              key={`${item.href}-${item.label}`}
-              href={item.href}
-              onClick={closeMenu}
-            >
-              {item.label}
-            </Link>
+            <Link key={`${item.href}-${item.label}`} href={item.href}>{item.label}</Link>
           ))}
         </nav>
 
-        <a
-          className="phone-link"
-          href={`tel:${SITE_PHONE.replace(/[^+0-9]/g, "")}`}
-        >
+        <a className="phone-link" href={`tel:${SITE_PHONE.replace(/[^+0-9]/g, "")}`}>
           <span aria-hidden="true">☎</span> {SITE_PHONE}
         </a>
 
@@ -73,29 +71,44 @@ export function SiteHeader() {
           type="button"
           aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
           aria-expanded={menuOpen}
-          aria-controls="main-navigation"
+          aria-controls="mobile-navigation"
           onClick={() => setMenuOpen((open) => !open)}
         >
           {menuOpen ? <X size={25} /> : <Menu size={25} />}
           <span>{menuOpen ? "Закрыть" : "Меню"}</span>
         </button>
-
-        <div
-          className={`mobile-nav-panel${menuOpen ? " is-open" : ""}`}
-          aria-hidden={!menuOpen}
-        >
-          {navigation.map((item) => (
-            <Link
-              key={`mobile-${item.href}-${item.label}`}
-              href={item.href}
-              tabIndex={menuOpen ? 0 : -1}
-              onClick={closeMenu}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
       </div>
+
+      {menuOpen && (
+        <>
+          <button
+            className="mobile-nav-backdrop"
+            type="button"
+            aria-label="Закрыть меню"
+            onClick={closeMenu}
+          />
+          <nav className="mobile-nav-panel" id="mobile-navigation" aria-label="Мобильная навигация">
+            <div className="mobile-nav-heading">
+              <span>Меню сайта</span>
+              <button className="mobile-nav-close" type="button" onClick={closeMenu} aria-label="Закрыть меню">
+                <X size={25} />
+              </button>
+            </div>
+            <div className="mobile-nav-links">
+              {navigation.map((item) => (
+                <Link key={`mobile-${item.href}-${item.label}`} href={item.href} onClick={closeMenu}>
+                  <span>{item.label}</span>
+                  <ChevronRight size={19} aria-hidden="true" />
+                </Link>
+              ))}
+            </div>
+            <a className="mobile-nav-phone" href={`tel:${SITE_PHONE.replace(/[^+0-9]/g, "")}`}>
+              <Phone size={18} /> {SITE_PHONE}
+            </a>
+            <p className="mobile-nav-caption">Детская медицинская служба «Айболит» · Томск</p>
+          </nav>
+        </>
+      )}
     </header>
   );
 }
