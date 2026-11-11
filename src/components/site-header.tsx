@@ -42,13 +42,15 @@ export function SiteHeader() {
       ? createPortal(
           <>
             <button
-              className="mobile-nav-backdrop"
+              className="aibolit-mobile-backdrop"
+              style={{ position: "fixed", inset: 0, zIndex: 2147483000, display: "block", width: "100vw", height: "100dvh", margin: 0, padding: 0, border: 0, background: "rgba(22, 42, 33, 0.48)", backdropFilter: "blur(3px)", WebkitBackdropFilter: "blur(3px)" }}
               type="button"
               aria-label="Закрыть меню"
               onClick={closeMenu}
             />
             <nav
-              className="mobile-nav-panel"
+              className="aibolit-mobile-drawer mobile-nav-panel"
+              style={{ position: "fixed", top: 0, right: 0, bottom: 0, zIndex: 2147483001, display: "flex", flexDirection: "column", width: "min(88vw, 390px)", height: "100dvh", minHeight: "100dvh", boxSizing: "border-box", padding: "max(22px, env(safe-area-inset-top)) 22px max(24px, env(safe-area-inset-bottom))", overflowY: "auto", visibility: "visible", opacity: 1, transform: "none", background: "#ffffff", color: "#20352e", boxShadow: "-18px 0 55px rgba(20, 48, 34, 0.18)" }}
               id="mobile-navigation"
               aria-label="Мобильная навигация"
               aria-modal="true"
