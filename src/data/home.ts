@@ -1,3 +1,5 @@
+import { ROUTES } from "@/config/paths";
+
 export const HOME_FEATURES = [
   { icon: "▦", title: "Опыт работы", detail: "с 2001 года", tone: "mint" },
   { icon: "⌂", title: "Вызов врача", detail: "на дом", tone: "yellow" },
@@ -6,7 +8,7 @@ export const HOME_FEATURES = [
 ] as const;
 
 export const HOME_SERVICES = [
-  { icon: "＋", title: "Педиатр на дом", text: "Вызов детского врача домой в Томске.", href: "/uslugi-i-ceny/vyzov-pediatra-na-dom/", link: "Вызвать педиатра" },
-  { icon: "✳", title: "Детские специалисты", text: "Консультации профильных детских врачей.", href: "/doctors/", link: "Выбрать врача" },
-  { icon: "♡", title: "Программы наблюдения", text: "Плановое сопровождение здоровья ребёнка.", href: "/programmy-nablyudeniya-za-zdorovem/", link: "Подробнее" },
+  { icon: "＋", title: "Педиатр на дом", text: "Вызов детского врача домой в Томске.", href: ROUTES.pediatricianHome, link: "Вызвать педиатра" },
+  { icon: "✳", title: "Детские специалисты", text: "Консультации профильных детских врачей.", href: ROUTES.doctors, link: "Выбрать врача" },
+  { icon: "♡", title: "Программы наблюдения", text: "Плановое сопровождение здоровья ребёнка.", href: ROUTES.observationPrograms, link: "Подробнее" },
 ] as const;
