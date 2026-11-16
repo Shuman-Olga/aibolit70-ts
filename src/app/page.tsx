@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getRouteByPath } from "@/lib/routes";
+import { getRouteByPath, ROUTES } from "@/routing";
 import { createPageMetadata } from "@/lib/seo";
 import { PHONE_HREF, SITE_PHONE } from "@/config/site";
 import { HOME_FEATURES, HOME_SERVICES } from "@/data/home";
@@ -44,7 +44,7 @@ export default function HomePage() {
                 <span>Вызвать врача</span>
                 <span aria-hidden="true">›</span>
               </a>
-              <Link className={styles.secondary} href="/doctors/">
+              <Link className={styles.secondary} href={ROUTES.doctors}>
                 <span className={styles.doctorIcon} aria-hidden="true">
                   ♙
                 </span>
