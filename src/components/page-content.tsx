@@ -11,13 +11,7 @@ export function PageContent({ route }: { route: SiteRoute }) {
       {isMigrated ? (
         <MigratedPageContent pageKey={route.contentKey} />
       ) : (
-        <>
-          <p className="lead">{route.description}</p>
-          <div className="migration-note">
-            <strong>Страница подготовлена к следующему этапу переноса.</strong>
-            <p>Для неё будут перенесены оригинальный текст, изображения, документы и внутренние ссылки.</p>
-          </div>
-        </>
+        <p className="lead">{route.description}</p>
       )}
     </article>
   );
