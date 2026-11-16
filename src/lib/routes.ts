@@ -1,5 +1,5 @@
 import type { SiteRoute } from "@/types/content";
-import { ROUTES } from "@/config/paths";
+import { ROUTES } from "@/config/navigation";
 
 // SEO-поля и URL перенесены из src/routes/routeConfig.js ветки refactor.
 // Контент страниц переносится поэтапно из старых JSX-компонентов.
