@@ -1,42 +1,17 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { routes } from "@/lib/routes";
+import { getRouteByPath } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
-import { PHONE_HREF, SITE, SITE_NAME, SITE_PHONE, SITE_URL } from "@/config/site";
-import { HOME_FEATURES, HOME_SEO, HOME_SERVICES } from "@/data/home";
+import { PHONE_HREF, SITE_PHONE } from "@/config/site";
+import { HOME_FEATURES, HOME_SERVICES } from "@/data/home";
 import styles from "./home.module.scss";
 
 const phoneHref = PHONE_HREF;
-export const metadata: Metadata = {
-  ...createPageMetadata(routes[0]),
-  title: { absolute: HOME_SEO.title },
-  description: HOME_SEO.description,
-  alternates: { canonical: `${SITE_URL}/` },
-  openGraph: {
-    type: "website",
-    locale: "ru_RU",
-    siteName: SITE_NAME,
-    title: HOME_SEO.title,
-    description: HOME_SEO.description,
-    url: `${SITE_URL}/`,
-    images: [
-      {
-        url: SITE.assets.homeHero,
-        width: 972,
-        height: 615,
-        alt: "Иллюстрация цыплёнка-врача с плюшевым мишкой",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: HOME_SEO.title,
-    description: HOME_SEO.description,
-    images: [SITE.assets.homeHero],
-  },
-  keywords: [...HOME_SEO.keywords],
-};
+const homeRoute = getRouteByPath("/");
+if (!homeRoute) {
+  throw new Error("Homepage route is missing from the route registry.");
+}
+export const metadata = createPageMetadata(homeRoute);
 
 export default function HomePage() {
   return (
@@ -88,7 +63,7 @@ export default function HomePage() {
           <div className={styles.illustration}>
             <div className={styles.illustrationHalo} />
             <Image
-              src=SITE.assets.homeHero
+              src="/chick-doctor-scene.png"
               alt="Весёлый цыплёнок в белом халате с фонендоскопом и плюшевым мишкой"
               width={972}
               height={615}
