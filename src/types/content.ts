@@ -60,6 +60,8 @@ export type SiteRoute = {
   title: string;
   description: string;
   image?: string;
+  /** Explicit parent route used to build the breadcrumb trail. */
+  parent?: `/${string}/`;
   keywords?: readonly string[];
 };
 
