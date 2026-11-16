@@ -312,17 +312,6 @@ h3 {
 .page-content h1 {
   font-size: clamp(34px, 4vw, 48px);
 }
-.migration-note {
-  margin-top: 40px;
-  padding: 24px 28px;
-  border: 1px dashed #b8d2c1;
-  border-radius: 18px;
-  background: var(--surface);
-}
-.migration-note p {
-  margin: 8px 0 0;
-  color: var(--muted);
-}
 .site-footer {
   padding-top: 54px;
   background: #203b31;
