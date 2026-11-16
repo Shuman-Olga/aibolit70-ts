@@ -14,9 +14,9 @@ function createRouteIndex(items: readonly SiteRoute[]): ReadonlyMap<string, Site
 export const routeByPath = createRouteIndex(routes);
 
 export function normalizeRoutePath(path: string): string {
-  const pathname = path.trim().split(/[?#]/, 1)[0].replace(/\\/{2,}/g, "/");
+  const pathname = path.trim().split(/[?#]/, 1)[0].replace(/\/{2,}/g, "/");
   if (!pathname || pathname === "/") return "/";
-  return `/${pathname.replace(/^\\/+|\\/+$/g, "")}/`;
+  return `/${pathname.replace(/^\/+|\/+$/g, "")}/`;
 }
 
 /** Resolve a URL path regardless of leading/trailing or repeated slashes. */
