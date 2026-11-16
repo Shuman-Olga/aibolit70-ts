@@ -60,6 +60,7 @@ export type SiteRoute = {
   title: string;
   description: string;
   image?: string;
+  keywords?: readonly string[];
 };
 
 export type BreadcrumbItem = {
