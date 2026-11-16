@@ -5,8 +5,29 @@ import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock3, MapPin, Menu, Phone, X, ChevronRight, ChevronDown } from "lucide-react";
-import { MAIN_NAVIGATION } from "@/config/navigation";
+import { MAIN_NAVIGATION, type NavigationItem } from "@/navigation";
 import { PHONE_HREF, SITE_ADDRESS, SITE_HOURS, SITE_LOGO, SITE_PHONE } from "@/config/site";
+
+
+function NavigationLinks({ items, onNavigate, className }: { items: readonly NavigationItem[]; onNavigate?: () => void; className?: string }) {
+  return (
+    <div className={className}>
+      {items.map((item) => (
+        <div className="mobile-nav-group" key={`${item.href}-${item.label}`}>
+          {item.children?.length ? (
+            <details className="mobile-nav-dropdown">
+              <summary><span>{item.label}</span><ChevronDown size={18} aria-hidden="true" /></summary>
+              <div className="mobile-nav-submenu">
+                <Link href={item.href} onClick={onNavigate}>{item.label}</Link>
+                <NavigationLinks items={item.children} onNavigate={onNavigate} />
+              </div>
+            </details>
+          ) : <Link href={item.href} onClick={onNavigate}><span>{item.label}</span><ChevronRight size={19} aria-hidden="true" /></Link>}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -60,32 +81,7 @@ export function SiteHeader() {
                 </button>
               </div>
 
-              <div className="mobile-nav-links">
-                {MAIN_NAVIGATION.map((item) => (
-                  <div className="mobile-nav-group" key={`mobile-${item.href}-${item.label}`}>
-                    {item.children ? (
-                      <details className="mobile-nav-dropdown">
-                        <summary>
-                          <span>{item.label}</span>
-                          <ChevronDown size={18} aria-hidden="true" />
-                        </summary>
-                        <div className="mobile-nav-submenu">
-                          {item.children.map((child) => (
-                            <Link key={child.href} href={child.href} onClick={closeMenu}>
-                              {child.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </details>
-                    ) : (
-                      <Link href={item.href} onClick={closeMenu}>
-                        <span>{item.label}</span>
-                        <ChevronRight size={19} aria-hidden="true" />
-                      </Link>
-                    )}
-                  </div>
-                ))}
-              </div>
+              <NavigationLinks items={MAIN_NAVIGATION} onNavigate={closeMenu} className="mobile-nav-links" />
 
               <a
                 className="mobile-nav-phone"
@@ -136,7 +132,10 @@ export function SiteHeader() {
                 {item.children && (
                   <div className="main-nav-dropdown">
                     {item.children.map((child) => (
-                      <Link key={child.href} href={child.href}>{child.label}</Link>
+                      <div className="main-nav-subgroup" key={`${child.href}-${child.label}`}>
+                        <Link href={child.href}>{child.label}</Link>
+                        {child.children?.length ? <div className="main-nav-dropdown main-nav-dropdown--nested">{child.children.map((nested) => <Link key={`${nested.href}-${nested.label}`} href={nested.href}>{nested.label}</Link>)}</div> : null}
+                      </div>
                     ))}
                   </div>
                 )}
