@@ -56,6 +56,8 @@ export type PageContentKey =
 export type SiteRoute = {
   path: `/${string}/` | "/";
   contentKey: PageContentKey;
+  /** Human-readable page label shared by navigation and breadcrumbs. */
+  label: string;
   crumb: string;
   title: string;
   description: string;
