@@ -76,9 +76,9 @@ function createRouteIndex(items: readonly SiteRoute[]): ReadonlyMap<string, Site
 export const routeByPath = createRouteIndex(routes);
 
 export function normalizeRoutePath(path: string): string {
-  const pathname = path.trim().split(/[?#]/, 1)[0].replace(/\\/{2,}/g, "/");
+  const pathname = path.trim().split(/[?#]/, 1)[0].replace(/\/{2,}/g, "/");
   if (!pathname || pathname === "/") return "/";
-  return `/${pathname.replace(/^\\/+|\\/+$/g, "")}/`;
+  return `/${pathname.replace(/^\/+|\/+$/g, "")}/`;
 }
 
 /** Resolve a URL path regardless of leading/trailing or repeated slashes. */
@@ -114,7 +114,6 @@ export function getBreadcrumbs(route: SiteRoute) {
     .sort((a, b) => normalizeRoutePath(a.path).length - normalizeRoutePath(b.path).length);
 
   return [
-    { label: "Главная", href: "/" },
     ...ancestors.map((ancestor) => ({
       label: ancestor.crumb,
       href: normalizeRoutePath(ancestor.path),
