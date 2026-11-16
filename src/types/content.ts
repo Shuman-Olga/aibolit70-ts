@@ -63,6 +63,8 @@ export type SiteRoute = {
   /** Explicit parent route used to build the breadcrumb trail. */
   parent?: `/${string}/`;
   keywords?: readonly string[];
+  /** Whether this page is ready to be indexed and included in the sitemap. */
+  indexable?: boolean;
 };
 
 export type BreadcrumbItem = {
