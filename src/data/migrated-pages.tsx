@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { PageContentKey } from "@/types/content";
+import { ROUTES } from "@/routing/paths";
 
 type ContentLink = { label: string; href: string };
 type ContentSection = {
@@ -19,31 +20,31 @@ type MigratedPage = {
 };
 
 const aboutLinks: ContentLink[] = [
-  { label: "Контролирующие организации", href: "/o-nas/kontroliruyushie-organizacii/" },
-  { label: "Лицензии", href: "/o-nas/licenzii/" },
-  { label: "Документы", href: "/o-nas/documents/" },
-  { label: "Наши партнёры", href: "/o-nas/nashi-partnery/" },
-  { label: "Правовая информация", href: "/o-nas/pravovaya-informaciya/" },
-  { label: "Вакансии", href: "/o-nas/vacancies/" },
-  { label: "Карта сайта", href: "/o-nas/map-site/" },
+  { label: "Контролирующие организации", href: ROUTES.controllingOrganizations },
+  { label: "Лицензии", href: ROUTES.licenses },
+  { label: "Документы", href: ROUTES.documents },
+  { label: "Наши партнёры", href: ROUTES.partners },
+  { label: "Правовая информация", href: ROUTES.legalInformation },
+  { label: "Вакансии", href: ROUTES.vacancies },
+  { label: "Карта сайта", href: ROUTES.siteMap },
 ];
 
 const serviceLinks: ContentLink[] = [
-  { label: "Вызов педиатра на дом", href: "/uslugi-i-ceny/vyzov-pediatra-na-dom/" },
-  { label: "Приём педиатра", href: "/uslugi-i-ceny/pediatr/" },
-  { label: "Медицинские справки для детей", href: "/uslugi-i-ceny/medicinskie-spravki-rebenku/" },
-  { label: "Программы наблюдения", href: "/programmy-nablyudeniya-za-zdorovem/" },
-  { label: "Чек-апы", href: "/chek-up/" },
+  { label: "Вызов педиатра на дом", href: ROUTES.pediatricianHome },
+  { label: "Приём педиатра", href: ROUTES.pediatrician },
+  { label: "Медицинские справки для детей", href: ROUTES.medicalCertificates },
+  { label: "Программы наблюдения", href: ROUTES.observationPrograms },
+  { label: "Чек-апы", href: ROUTES.checkUp },
 ];
 
 const certificateLinks: ContentLink[] = [
-  { label: "Санаторно-курортная карта", href: "/uslugi-i-ceny/medicinskie-spravki-rebenku/sanatorno-kurortnaya-karta-dlya-det/" },
-  { label: "Справка в школу", href: "/uslugi-i-ceny/medicinskie-spravki-rebenku/spravka-v-shkolu/" },
-  { label: "Справка в детский сад", href: "/uslugi-i-ceny/medicinskie-spravki-rebenku/spravka-v-detskii-sad/" },
-  { label: "Справка в бассейн", href: "/uslugi-i-ceny/medicinskie-spravki-rebenku/spravka-v-bassein/" },
-  { label: "Справка о состоянии здоровья", href: "/uslugi-i-ceny/medicinskie-spravki-rebenku/spravka-o-sostoyanii-zdorovya-reben/" },
-  { label: "Медицинская карта 026/у", href: "/uslugi-i-ceny/medicinskie-spravki-rebenku/spravka-poforme-026-u/" },
-  { label: "Справка в детский лагерь 079/у", href: "/uslugi-i-ceny/medicinskie-spravki-rebenku/spravka-po-forme-079-u/" },
+  { label: "Санаторно-курортная карта", href: ROUTES.sanatoriumCard },
+  { label: "Справка в школу", href: ROUTES.schoolCertificate },
+  { label: "Справка в детский сад", href: ROUTES.kindergartenCertificate },
+  { label: "Справка в бассейн", href: ROUTES.poolCertificate },
+  { label: "Справка о состоянии здоровья", href: ROUTES.healthCertificate },
+  { label: "Медицинская карта 026/у", href: ROUTES.certificate026u },
+  { label: "Справка в детский лагерь 079/у", href: ROUTES.certificate079u },
 ];
 
 export const MIGRATED_PAGES: Partial<Record<PageContentKey, MigratedPage>> = {
@@ -209,15 +210,15 @@ export const MIGRATED_PAGES: Partial<Record<PageContentKey, MigratedPage>> = {
       { mark: "03", title: "Персональный подход", description: "Рекомендации с учётом возраста, состояния и истории здоровья ребёнка" },
     ],
     cards: [
-      { image: "https://aibolit70.ru/assets/img/Sadovnikova_Elena_Gennadevna.db0177a290870cb2e56d.jpg", title: "Садовникова Елена Геннадьевна", meta: "Педиатр · аллерголог", description: "Ведение детей с рождения, педиатрическая помощь и консультации по аллергологическим вопросам.", href: "/doctors/sadovnikova-elena-gennadevna/" },
-      { image: "https://aibolit70.ru/assets/img/Petuhova_Olga_Viktorovna.76ebfef56dfbc70d4541.jpg", title: "Петухова Ольга Викторовна", meta: "Главный врач · педиатр", description: "Педиатрическое наблюдение, вопросы вскармливания и помощь при заболеваниях желудочно-кишечного тракта.", href: "/doctors/petuhova-olga-viktorovna/" },
-      { image: "https://aibolit70.ru/assets/img/Shevchenko_Anastasiya_Nikolaevna.2662c04317fcef503443.jpg", title: "Шевченко Анастасия Николаевна", meta: "Педиатр · неонатолог", description: "Наблюдение детей первого года жизни, вопросы питания, прикорма и профилактики заболеваний.", href: "/doctors/shevchenko-anastasiya-nikolaevna/" },
-      { image: "https://aibolit70.ru/assets/img/Ostrouhova_Natalya_Petrovna.8b4a4e6874c952e50656.jpg", title: "Остроухова Наталья Петровна", meta: "Педиатр", description: "Наблюдение детей с рождения, диагностика и лечение острых и хронических заболеваний детского возраста.", href: "/doctors/ostrouhova-natalya-petrovna/" },
+      { image: "https://aibolit70.ru/assets/img/Sadovnikova_Elena_Gennadevna.db0177a290870cb2e56d.jpg", title: "Садовникова Елена Геннадьевна", meta: "Педиатр · аллерголог", description: "Ведение детей с рождения, педиатрическая помощь и консультации по аллергологическим вопросам.", href: ROUTES.doctorSadovnikova },
+      { image: "https://aibolit70.ru/assets/img/Petuhova_Olga_Viktorovna.76ebfef56dfbc70d4541.jpg", title: "Петухова Ольга Викторовна", meta: "Главный врач · педиатр", description: "Педиатрическое наблюдение, вопросы вскармливания и помощь при заболеваниях желудочно-кишечного тракта.", href: ROUTES.doctorPetuhova },
+      { image: "https://aibolit70.ru/assets/img/Shevchenko_Anastasiya_Nikolaevna.2662c04317fcef503443.jpg", title: "Шевченко Анастасия Николаевна", meta: "Педиатр · неонатолог", description: "Наблюдение детей первого года жизни, вопросы питания, прикорма и профилактики заболеваний.", href: ROUTES.doctorShevchenko },
+      { image: "https://aibolit70.ru/assets/img/Ostrouhova_Natalya_Petrovna.8b4a4e6874c952e50656.jpg", title: "Остроухова Наталья Петровна", meta: "Педиатр", description: "Наблюдение детей с рождения, диагностика и лечение острых и хронических заболеваний детского возраста.", href: ROUTES.doctorOstrouhova },
     ],
     sections: [
       { heading: "Как выбрать врача", paragraphs: ["При выборе педиатра учитывайте возраст ребёнка, повод обращения и то, нужен ли вам плановый приём, наблюдение или выезд на дом. Администратор поможет уточнить доступность специалиста и подобрать удобное время."] },
       { heading: "Запись на консультацию", paragraphs: ["Позвоните по телефону +7 (3822) 60-92-43. Сообщите возраст ребёнка и кратко опишите вопрос, с которым хотите обратиться."] },
-      { heading: "Полезная информация", links: [{ label: "Программы наблюдения за детьми", href: "/programmy-nablyudeniya-za-zdorovem/" }, { label: "Сведения о медицинских специалистах", href: "/pacientam/svedeniya-o-specialistah/" }, { label: "Цены на услуги", href: "/pacientam/prices/" }] }
+      { heading: "Полезная информация", links: [{ label: "Программы наблюдения за детьми", href: ROUTES.observationPrograms }, { label: "Сведения о медицинских специалистах", href: ROUTES.specialists }, { label: "Цены на услуги", href: ROUTES.prices }] }
     ]
   },
   DoctorSadovnikova: {
@@ -268,14 +269,14 @@ export const MIGRATED_PAGES: Partial<Record<PageContentKey, MigratedPage>> = {
       { mark: "5+", title: "Педиатр рядом", description: "Регулярное наблюдение и профилактика для детей старшего возраста" },
     ],
     cards: [
-      { title: "Малыш Хоум", meta: "От 0 до 2 лет", description: "Персональный педиатр, осмотры узких специалистов, анализы, УЗИ, вакцинация и медицинская документация.", href: "/programmy-nablyudeniya-za-zdorovem/malysh-houm-standart-ot-0-do-2-h-le/" },
-      { title: "Здоровый ребёнок Хоум", meta: "От 2 до 5 лет", description: "Плановые осмотры, наблюдение педиатра, необходимые обследования и индивидуальный календарь вакцинации.", href: "/programmy-nablyudeniya-za-zdorovem/zdorovyj-rebenok-houm-standart-ot-2/" },
-      { title: "Педиатр рядом", meta: "От 5 лет", description: "Регулярный контакт с педиатром, плановые осмотры специалистов, анализы и медицинские документы.", href: "/programmy-nablyudeniya-za-zdorovem/zdorovyj-rebenok-houm-midi-ot-2-h-l/" },
+      { title: "Малыш Хоум", meta: "От 0 до 2 лет", description: "Персональный педиатр, осмотры узких специалистов, анализы, УЗИ, вакцинация и медицинская документация.", href: ROUTES.programBaby },
+      { title: "Здоровый ребёнок Хоум", meta: "От 2 до 5 лет", description: "Плановые осмотры, наблюдение педиатра, необходимые обследования и индивидуальный календарь вакцинации.", href: ROUTES.programHealthyChild },
+      { title: "Педиатр рядом", meta: "От 5 лет", description: "Регулярный контакт с педиатром, плановые осмотры специалистов, анализы и медицинские документы.", href: ROUTES.programPediatricianNearby },
     ],
     sections: [
       { heading: "Что объединяет программы", bullets: ["За ребёнком закрепляется персональный врач-педиатр", "Возможность связаться с ведущим врачом в рабочее время", "Плановые выезды педиатра и профильных специалистов по согласованию", "Забор анализов на дому в рамках выбранной программы", "Вакцинация по национальному и индивидуальному календарю", "Оформление медицинской документации и справок"] },
       { heading: "Как выбрать программу", paragraphs: ["Состав наблюдения зависит от возраста ребёнка и выбранного варианта программы. Администратор поможет сравнить комплектацию, сроки договора, условия выезда и актуальную стоимость."] },
-      { heading: "Уточнить стоимость", links: [{ label: "Актуальные цены на программы", href: "/pacientam/prices/" }] }
+      { heading: "Уточнить стоимость", links: [{ label: "Актуальные цены на программы", href: ROUTES.prices }] }
     ],
     action: { title: "Подберём программу наблюдения", description: "Расскажите возраст ребёнка — поможем уточнить подходящий вариант и его состав.", label: "Позвонить: 60-92-43", href: "tel:+73822609243" }
   },
@@ -303,7 +304,7 @@ export const MIGRATED_PAGES: Partial<Record<PageContentKey, MigratedPage>> = {
     sections: [
       { heading: "Что входит в программу", bullets: ["Наблюдение ведущего педиатра и визиты на дому", "Вызов врача при заболевании по показаниям", "Плановые осмотры невролога, хирурга-ортопеда, офтальмолога и оториноларинголога", "Плановые анализы на дому", "УЗИ по назначению врача и условиям выбранного пакета", "Вакцинация по индивидуальному календарю", "Мобильная связь с ведущим педиатром в рабочее время", "Медицинские справки и документация в рамках программы"] },
       { heading: "Кому подойдёт", paragraphs: ["Семьям, которые хотят сохранить регулярное наблюдение педиатра после раннего возраста и заранее планировать профилактические осмотры, консультации и обследования ребёнка."] },
-      { heading: "Варианты и стоимость", paragraphs: ["Состав услуг и стоимость зависят от выбранного варианта программы и района обслуживания. Перед оформлением договора уточните актуальную комплектацию и цены у администратора."], links: [{ label: "Посмотреть актуальный прайс", href: "/pacientam/prices/" }] }
+      { heading: "Варианты и стоимость", paragraphs: ["Состав услуг и стоимость зависят от выбранного варианта программы и района обслуживания. Перед оформлением договора уточните актуальную комплектацию и цены у администратора."], links: [{ label: "Посмотреть актуальный прайс", href: ROUTES.prices }] }
     ],
     action: { title: "Узнать условия программы", description: "Администратор расскажет о составе программы для ребёнка 2–5 лет.", label: "Позвонить: 60-92-43", href: "tel:+73822609243" }
   },
@@ -317,7 +318,7 @@ export const MIGRATED_PAGES: Partial<Record<PageContentKey, MigratedPage>> = {
     sections: [
       { heading: "Что входит в программу", bullets: ["Наблюдение ведущего педиатра, включая плановый визит на дому", "Вызов педиатра при заболевании по показаниям", "Плановые осмотры невролога, хирурга-ортопеда, офтальмолога и оториноларинголога", "Плановые заборы анализов на дому", "Вакцинация по индивидуальному календарю", "Мобильная связь с ведущим врачом в рабочее время", "Оформление медицинских справок и документации в рамках программы"] },
       { heading: "Кому подойдёт", paragraphs: ["Семьям, которым важно иметь постоянного педиатра и организовать плановое наблюдение за здоровьем ребёнка школьного и дошкольного возраста."] },
-      { heading: "Стоимость и оформление", paragraphs: ["Стоимость зависит от выбранных условий обслуживания и адреса. Уточните актуальную цену, минимальный срок договора и состав услуг у администратора."], links: [{ label: "Актуальные цены", href: "/pacientam/prices/" }] }
+      { heading: "Стоимость и оформление", paragraphs: ["Стоимость зависит от выбранных условий обслуживания и адреса. Уточните актуальную цену, минимальный срок договора и состав услуг у администратора."], links: [{ label: "Актуальные цены", href: ROUTES.prices }] }
     ],
     action: { title: "Уточнить условия «Педиатр рядом»", description: "Подскажем, какие услуги включены в программу и как оформить договор.", label: "Позвонить: 60-92-43", href: "tel:+73822609243" }
   },
