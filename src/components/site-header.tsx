@@ -6,23 +6,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { Clock3, MapPin, Menu, Phone, X, ChevronRight, ChevronDown } from "lucide-react";
 import { MAIN_NAVIGATION, type NavigationItem } from "@/navigation";
+import { routes } from "@/routing/route-registry";
 import { PHONE_HREF, SITE_ADDRESS, SITE_HOURS, SITE_LOGO, SITE_PHONE } from "@/config/site";
 
+
+function getNavigationLabel(href: NavigationItem["href"]): string {
+  return routes.find((route) => route.path === href)?.label ?? "";
+}
 
 function NavigationLinks({ items, onNavigate, className }: { items: readonly NavigationItem[]; onNavigate?: () => void; className?: string }) {
   return (
     <div className={className}>
       {items.map((item) => (
-        <div className="mobile-nav-group" key={`${item.href}-${item.label}`}>
+        <div className="mobile-nav-group" key={`${item.href}-${getNavigationLabel(item.href)}`}>
           {item.children?.length ? (
             <details className="mobile-nav-dropdown">
-              <summary><span>{item.label}</span><ChevronDown size={18} aria-hidden="true" /></summary>
+              <summary><span>{getNavigationLabel(item.href)}</span><ChevronDown size={18} aria-hidden="true" /></summary>
               <div className="mobile-nav-submenu">
-                <Link href={item.href} onClick={onNavigate}>{item.label}</Link>
+                <Link href={item.href} onClick={onNavigate}>{getNavigationLabel(item.href)}</Link>
                 <NavigationLinks items={item.children} onNavigate={onNavigate} />
               </div>
             </details>
-          ) : <Link href={item.href} onClick={onNavigate}><span>{item.label}</span><ChevronRight size={19} aria-hidden="true" /></Link>}
+          ) : <Link href={item.href} onClick={onNavigate}><span>{getNavigationLabel(item.href)}</span><ChevronRight size={19} aria-hidden="true" /></Link>}
         </div>
       ))}
     </div>
@@ -160,17 +165,17 @@ export function SiteHeader() {
 
           <nav className="main-nav" aria-label="Основная навигация">
             {MAIN_NAVIGATION.map((item) => (
-              <div className={item.children ? "main-nav-item has-dropdown" : "main-nav-item"} key={`${item.href}-${item.label}`}>
+              <div className={item.children ? "main-nav-item has-dropdown" : "main-nav-item"} key={`${item.href}-${getNavigationLabel(item.href)}`}>
                 <Link href={item.href}>
-                  {item.label}
+                  {getNavigationLabel(item.href)}
                   {item.children && <ChevronDown size={14} aria-hidden="true" />}
                 </Link>
                 {item.children && (
                   <div className="main-nav-dropdown">
                     {item.children.map((child) => (
-                      <div className="main-nav-subgroup" key={`${child.href}-${child.label}`}>
-                        <Link href={child.href}>{child.label}</Link>
-                        {child.children?.length ? <div className="main-nav-dropdown main-nav-dropdown--nested">{child.children.map((nested) => <Link key={`${nested.href}-${nested.label}`} href={nested.href}>{nested.label}</Link>)}</div> : null}
+                      <div className="main-nav-subgroup" key={`${child.href}-${getNavigationLabel(child.href)}`}>
+                        <Link href={child.href}>{getNavigationLabel(child.href)}</Link>
+                        {child.children?.length ? <div className="main-nav-dropdown main-nav-dropdown--nested">{child.children.map((nested) => <Link key={`${nested.href}-${getNavigationLabel(nested.href)}`} href={nested.href}>{getNavigationLabel(nested.href)}</Link>)}</div> : null}
                       </div>
                     ))}
                   </div>
