@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,6 +31,8 @@ function NavigationLinks({ items, onNavigate, className }: { items: readonly Nav
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
   const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
@@ -39,14 +41,45 @@ export function SiteHeader() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
+    const drawer = drawerRef.current;
+    const focusableSelector = 'a[href], button:not([disabled]), summary, [tabindex]:not([tabindex="-1"])';
+    const getFocusableElements = () =>
+      Array.from(drawer?.querySelectorAll<HTMLElement>(focusableSelector) ?? [])
+        .filter((element) => element.getAttribute("aria-hidden") !== "true");
+
+    getFocusableElements()[0]?.focus();
+
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = getFocusableElements();
+      if (focusable.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
 
     document.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
+      menuToggleRef.current?.focus();
     };
   }, [menuOpen]);
 
@@ -62,15 +95,17 @@ export function SiteHeader() {
               onClick={closeMenu}
             />
             <nav
+              ref={drawerRef}
               className="aibolit-mobile-drawer mobile-nav-panel"
               style={{ position: "fixed", top: 0, right: 0, bottom: 0, zIndex: 2147483001, display: "flex", flexDirection: "column", width: "min(88vw, 390px)", height: "100dvh", minHeight: "100dvh", boxSizing: "border-box", padding: "max(22px, env(safe-area-inset-top)) 22px max(24px, env(safe-area-inset-bottom))", overflowY: "auto", visibility: "visible", opacity: 1, transform: "none", background: "#ffffff", color: "#20352e", boxShadow: "-18px 0 55px rgba(20, 48, 34, 0.18)" }}
               id="mobile-navigation"
               aria-label="Мобильная навигация"
+              aria-labelledby="mobile-navigation-title"
               aria-modal="true"
               role="dialog"
             >
               <div className="mobile-nav-heading">
-                <span>Меню сайта</span>
+                <span id="mobile-navigation-title">Меню сайта</span>
                 <button
                   className="mobile-nav-close"
                   type="button"
@@ -86,6 +121,7 @@ export function SiteHeader() {
               <a
                 className="mobile-nav-phone"
                 href={PHONE_HREF}
+                onClick={closeMenu}
               >
                 <Phone size={18} /> {SITE_PHONE}
               </a>
@@ -151,6 +187,7 @@ export function SiteHeader() {
           </a>
 
           <button
+            ref={menuToggleRef}
             className="mobile-menu-toggle"
             type="button"
             aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
