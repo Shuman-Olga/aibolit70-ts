@@ -1,4 +1,4 @@
-import { ROUTES } from "@/config";
+import { ROUTES } from "@/routing/paths";
 
 export const HOME_FEATURES = [
   { icon: "▦", title: "Опыт работы", detail: "с 2001 года", tone: "mint" },
