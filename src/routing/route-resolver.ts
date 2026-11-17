@@ -35,19 +35,16 @@ export function getStaticRouteParams(): { slug: string[] }[] {
     .map((route) => ({ slug: normalizeRoutePath(route.path).split("/").filter(Boolean) }));
 }
 
-/** Build breadcrumbs from explicitly registered parent routes. */
+/** Build breadcrumbs from the nearest registered URL ancestors. */
 export function getBreadcrumbs(route: SiteRoute): BreadcrumbItem[] {
-  const parents: BreadcrumbItem[] = [];
-  const visited = new Set<string>([normalizeRoutePath(route.path)]);
-  let parentPath = route.parent;
-  while (parentPath) {
-    const normalized = normalizeRoutePath(parentPath);
-    if (visited.has(normalized)) throw new Error(`Circular breadcrumb parent: ${normalized}`);
-    visited.add(normalized);
-    const parent = routeByPath.get(normalized);
-    if (!parent) throw new Error(`Unknown breadcrumb parent: ${normalized}`);
-    parents.unshift({ label: parent.label, href: normalized });
-    parentPath = parent.parent;
+  const segments = normalizeRoutePath(route.path).split("/").filter(Boolean);
+  const ancestors: BreadcrumbItem[] = [];
+
+  for (let depth = 1; depth < segments.length; depth += 1) {
+    const ancestorPath = normalizeRoutePath(segments.slice(0, depth).join("/"));
+    const ancestor = routeByPath.get(ancestorPath);
+    if (ancestor) ancestors.push({ label: ancestor.label, href: ancestorPath });
   }
-  return [...parents, { label: route.label }];
+
+  return [...ancestors, { label: route.label }];
 }
