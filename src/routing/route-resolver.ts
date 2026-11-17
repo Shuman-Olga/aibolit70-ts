@@ -46,8 +46,8 @@ export function getBreadcrumbs(route: SiteRoute): BreadcrumbItem[] {
     visited.add(normalized);
     const parent = routeByPath.get(normalized);
     if (!parent) throw new Error(`Unknown breadcrumb parent: ${normalized}`);
-    parents.unshift({ label: parent.crumb, href: normalized });
+    parents.unshift({ label: parent.label, href: normalized });
     parentPath = parent.parent;
   }
-  return [...parents, { label: route.crumb }];
+  return [...parents, { label: route.label }];
 }
