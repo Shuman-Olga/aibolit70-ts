@@ -419,7 +419,7 @@ h3 {
   gap: 24px;
 }
 .brand {
-  width: 185px;
+  width: 165px;
 }
 .main-nav {
   gap: clamp(12px, 1.7vw, 26px);
@@ -445,7 +445,7 @@ h3 {
     padding-block: 15px;
   }
   .brand {
-    width: 195px;
+    width: 170px;
   }
   .main-nav {
     order: 3;
@@ -555,7 +555,7 @@ h3 {
     padding-block: 12px;
   }
   .brand {
-    width: min(100%, 176px);
+    width: min(100%, 155px);
   }
   .phone-link {
     justify-self: end;
@@ -589,7 +589,7 @@ h3 {
 }
 @media (max-width: 380px) {
   .brand {
-    width: 145px;
+    width: 135px;
   }
   .phone-link {
     padding: 8px 9px;
