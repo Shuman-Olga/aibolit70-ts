@@ -1,10 +1,10 @@
 import { ROUTES } from "@/routing/paths";
 
 export const HOME_FEATURES = [
-  { icon: "home", title: "Вызов врача", detail: "Быстро и удобно" },
-  { icon: "stethoscope", title: "Консультация", detail: "педиатра" },
-  { icon: "baby", title: "Детские", detail: "специалисты" },
-  { icon: "location", title: "Томск и пригород", detail: "Выезжаем к вам" },
+  { icon: "home", title: "Вызов врача на дом", detail: "Быстро и удобно" },
+  { icon: "stethoscope", title: "Консультация педиатра", detail: "Опытные специалисты" },
+  { icon: "baby", title: "Детские специалисты", detail: "Узкие специалисты" },
+  { icon: "location", title: "Здоровье вашего ребёнка", detail: "Наша главная забота" },
 ] as const;
 
 export const HOME_SERVICES = [
