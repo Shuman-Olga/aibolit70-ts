@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { PageContentKey } from "@/types/content";
 import { MIGRATED_PAGES } from "@/data/migrated-pages";
@@ -20,7 +21,16 @@ export function MigratedPageContent({ pageKey }: { pageKey: PageContentKey }) {
 
       {page.profile && (
         <section className="content-profile">
-          {page.profile.image ? <img className="content-profile__photo" src={page.profile.image} alt={pageKey === "DoctorSadovnikova" ? "Садовникова Елена Геннадьевна" : pageKey === "DoctorPetuhova" ? "Петухова Ольга Викторовна" : pageKey === "DoctorShevchenko" ? "Шевченко Анастасия Николаевна" : "Остроухова Наталья Петровна"} /> : <div className="content-profile__avatar" aria-hidden="true">{page.profile.initials}</div>}
+          {page.profile.image ? (
+            <Image
+              className="content-profile__photo"
+              src={page.profile.image}
+              alt={pageKey === "DoctorSadovnikova" ? "Садовникова Елена Геннадьевна" : pageKey === "DoctorPetuhova" ? "Петухова Ольга Викторовна" : pageKey === "DoctorShevchenko" ? "Шевченко Анастасия Николаевна" : "Остроухова Наталья Петровна"}
+              width={112}
+              height={140}
+              sizes="(max-width: 760px) 76px, 112px"
+            />
+          ) : <div className="content-profile__avatar" aria-hidden="true">{page.profile.initials}</div>}
           <div className="content-profile__info">
             <p className="content-profile__role">{page.profile.role}</p>
             <p className="content-profile__experience">{page.profile.experience}</p>
