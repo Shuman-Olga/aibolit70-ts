@@ -9,8 +9,9 @@ export function createPageMetadata(route: SiteRoute): Metadata {
   return {
     title: { absolute: route.title },
     description: route.description,
+    keywords: route.keywords ? [...route.keywords] : undefined,
     alternates: { canonical },
-    robots: { index: true, follow: true },
+    robots: { index: route.indexable === true, follow: true },
     openGraph: {
       type: "website",
       locale: "ru_RU",

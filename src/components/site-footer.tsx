@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ROUTES } from "@/config/paths";
+import { ROUTES } from "@/routing/paths";
 import { PHONE_HREF, SITE_ADDRESS, SITE_FULL_NAME, SITE_PHONE } from "@/config/site";
 
 export function SiteFooter() {

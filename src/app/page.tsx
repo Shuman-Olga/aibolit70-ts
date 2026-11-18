@@ -1,42 +1,24 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { routes } from "@/lib/routes";
+import { Baby, HousePlus, MapPin, Stethoscope } from "lucide-react";
+import { getRouteByPath } from "@/routing";
 import { createPageMetadata } from "@/lib/seo";
-import { PHONE_HREF, SITE, SITE_NAME, SITE_PHONE, SITE_URL } from "@/config/site";
-import { HOME_FEATURES, HOME_SEO, HOME_SERVICES } from "@/data/home";
+import { PHONE_HREF } from "@/config/site";
+import { HOME_FEATURES, HOME_SERVICES } from "@/data/home";
 import styles from "./home.module.scss";
 
 const phoneHref = PHONE_HREF;
-export const metadata: Metadata = {
-  ...createPageMetadata(routes[0]),
-  title: { absolute: HOME_SEO.title },
-  description: HOME_SEO.description,
-  alternates: { canonical: `${SITE_URL}/` },
-  openGraph: {
-    type: "website",
-    locale: "ru_RU",
-    siteName: SITE_NAME,
-    title: HOME_SEO.title,
-    description: HOME_SEO.description,
-    url: `${SITE_URL}/`,
-    images: [
-      {
-        url: SITE.assets.homeHero,
-        width: 972,
-        height: 615,
-        alt: "Иллюстрация цыплёнка-врача с плюшевым мишкой",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: HOME_SEO.title,
-    description: HOME_SEO.description,
-    images: [SITE.assets.homeHero],
-  },
-  keywords: [...HOME_SEO.keywords],
-};
+const FEATURE_ICONS = {
+  home: HousePlus,
+  stethoscope: Stethoscope,
+  baby: Baby,
+  location: MapPin,
+} as const;
+const homeRoute = getRouteByPath("/");
+if (!homeRoute) {
+  throw new Error("Homepage route is missing from the route registry.");
+}
+export const metadata = createPageMetadata(homeRoute);
 
 export default function HomePage() {
   return (
@@ -49,9 +31,6 @@ export default function HomePage() {
         </div>
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.copy}>
-            <p className={styles.eyebrow}>
-              <span /> Детская медицинская служба · Томск
-            </p>
             <h1 id="home-title">
               Здоровье
               <br />и забота о вашем
@@ -69,26 +48,13 @@ export default function HomePage() {
                 <span>Вызвать врача</span>
                 <span aria-hidden="true">›</span>
               </a>
-              <Link className={styles.secondary} href="/doctors/">
-                <span className={styles.doctorIcon} aria-hidden="true">
-                  ♙
-                </span>
-                <span>
-                  Познакомиться
-                  <br />с врачами
-                </span>
-                <span aria-hidden="true">›</span>
-              </Link>
             </div>
-            <p className={styles.phoneNote}>
-              Позвоните нам: <a href={phoneHref}>{SITE_PHONE}</a>
-            </p>
           </div>
 
           <div className={styles.illustration}>
             <div className={styles.illustrationHalo} />
             <Image
-              src=SITE.assets.homeHero
+              src="/chick-doctor-scene.png"
               alt="Весёлый цыплёнок в белом халате с фонендоскопом и плюшевым мишкой"
               width={972}
               height={615}
@@ -103,10 +69,11 @@ export default function HomePage() {
           <ul className={styles.features}>
             {HOME_FEATURES.map((feature) => (
               <li key={feature.title}>
-                <span
-                  className={`${styles.featureIcon} ${feature.tone === "yellow" ? styles.yellow : ""}`}
-                  aria-hidden="true">
-                  {feature.icon}
+                <span className={styles.featureIcon} aria-hidden="true">
+                  {(() => {
+                    const Icon = FEATURE_ICONS[feature.icon];
+                    return <Icon size={36} strokeWidth={1.8} />;
+                  })()}
                 </span>
                 <span>
                   <strong>{feature.title}</strong>

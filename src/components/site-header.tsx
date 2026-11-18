@@ -1,15 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock3, MapPin, Menu, Phone, X, ChevronRight, ChevronDown } from "lucide-react";
-import { MAIN_NAVIGATION } from "@/config/navigation";
+import { MAIN_NAVIGATION, type NavigationItem } from "@/navigation";
+import { routes } from "@/routing/route-registry";
 import { PHONE_HREF, SITE_ADDRESS, SITE_HOURS, SITE_LOGO, SITE_PHONE } from "@/config/site";
+
+
+function getNavigationLabel(href: NavigationItem["href"]): string {
+  return routes.find((route) => route.path === href)?.label ?? "";
+}
+
+function NavigationLinks({ items, onNavigate, className }: { items: readonly NavigationItem[]; onNavigate?: () => void; className?: string }) {
+  return (
+    <div className={className}>
+      {items.map((item) => (
+        <div className="mobile-nav-group" key={`${item.href}-${getNavigationLabel(item.href)}`}>
+          {item.children?.length ? (
+            <details className="mobile-nav-dropdown">
+              <summary><span>{getNavigationLabel(item.href)}</span><ChevronDown size={18} aria-hidden="true" /></summary>
+              <div className="mobile-nav-submenu">
+                <Link href={item.href} onClick={onNavigate}>{getNavigationLabel(item.href)}</Link>
+                <NavigationLinks items={item.children} onNavigate={onNavigate} />
+              </div>
+            </details>
+          ) : <Link href={item.href} onClick={onNavigate}><span>{getNavigationLabel(item.href)}</span><ChevronRight size={19} aria-hidden="true" /></Link>}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
   const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
@@ -18,14 +46,45 @@ export function SiteHeader() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
+    const drawer = drawerRef.current;
+    const focusableSelector = 'a[href], button:not([disabled]), summary, [tabindex]:not([tabindex="-1"])';
+    const getFocusableElements = () =>
+      Array.from(drawer?.querySelectorAll<HTMLElement>(focusableSelector) ?? [])
+        .filter((element) => element.getAttribute("aria-hidden") !== "true");
+
+    getFocusableElements()[0]?.focus();
+
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = getFocusableElements();
+      if (focusable.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
 
     document.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
+      menuToggleRef.current?.focus();
     };
   }, [menuOpen]);
 
@@ -41,15 +100,17 @@ export function SiteHeader() {
               onClick={closeMenu}
             />
             <nav
+              ref={drawerRef}
               className="aibolit-mobile-drawer mobile-nav-panel"
               style={{ position: "fixed", top: 0, right: 0, bottom: 0, zIndex: 2147483001, display: "flex", flexDirection: "column", width: "min(88vw, 390px)", height: "100dvh", minHeight: "100dvh", boxSizing: "border-box", padding: "max(22px, env(safe-area-inset-top)) 22px max(24px, env(safe-area-inset-bottom))", overflowY: "auto", visibility: "visible", opacity: 1, transform: "none", background: "#ffffff", color: "#20352e", boxShadow: "-18px 0 55px rgba(20, 48, 34, 0.18)" }}
               id="mobile-navigation"
               aria-label="Мобильная навигация"
+              aria-labelledby="mobile-navigation-title"
               aria-modal="true"
               role="dialog"
             >
               <div className="mobile-nav-heading">
-                <span>Меню сайта</span>
+                <span id="mobile-navigation-title">Меню сайта</span>
                 <button
                   className="mobile-nav-close"
                   type="button"
@@ -60,36 +121,12 @@ export function SiteHeader() {
                 </button>
               </div>
 
-              <div className="mobile-nav-links">
-                {MAIN_NAVIGATION.map((item) => (
-                  <div className="mobile-nav-group" key={`mobile-${item.href}-${item.label}`}>
-                    {item.children ? (
-                      <details className="mobile-nav-dropdown">
-                        <summary>
-                          <span>{item.label}</span>
-                          <ChevronDown size={18} aria-hidden="true" />
-                        </summary>
-                        <div className="mobile-nav-submenu">
-                          {item.children.map((child) => (
-                            <Link key={child.href} href={child.href} onClick={closeMenu}>
-                              {child.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </details>
-                    ) : (
-                      <Link href={item.href} onClick={closeMenu}>
-                        <span>{item.label}</span>
-                        <ChevronRight size={19} aria-hidden="true" />
-                      </Link>
-                    )}
-                  </div>
-                ))}
-              </div>
+              <NavigationLinks items={MAIN_NAVIGATION} onNavigate={closeMenu} className="mobile-nav-links" />
 
               <a
                 className="mobile-nav-phone"
                 href={PHONE_HREF}
+                onClick={closeMenu}
               >
                 <Phone size={18} /> {SITE_PHONE}
               </a>
@@ -108,7 +145,6 @@ export function SiteHeader() {
         <div className="topline">
           <div className="container topline-inner">
             <span><MapPin size={15} /> г. {SITE_ADDRESS.city}, {SITE_ADDRESS.street}</span>
-            <a href={PHONE_HREF}><Phone size={15} /> {SITE_PHONE}</a>
             <span className="hours"><Clock3 size={15} /> {SITE_HOURS.weekdays} · {SITE_HOURS.saturday}</span>
           </div>
         </div>
@@ -128,15 +164,18 @@ export function SiteHeader() {
 
           <nav className="main-nav" aria-label="Основная навигация">
             {MAIN_NAVIGATION.map((item) => (
-              <div className={item.children ? "main-nav-item has-dropdown" : "main-nav-item"} key={`${item.href}-${item.label}`}>
+              <div className={item.children ? "main-nav-item has-dropdown" : "main-nav-item"} key={`${item.href}-${getNavigationLabel(item.href)}`}>
                 <Link href={item.href}>
-                  {item.label}
+                  {getNavigationLabel(item.href)}
                   {item.children && <ChevronDown size={14} aria-hidden="true" />}
                 </Link>
                 {item.children && (
                   <div className="main-nav-dropdown">
                     {item.children.map((child) => (
-                      <Link key={child.href} href={child.href}>{child.label}</Link>
+                      <div className="main-nav-subgroup" key={`${child.href}-${getNavigationLabel(child.href)}`}>
+                        <Link href={child.href}>{getNavigationLabel(child.href)}</Link>
+                        {child.children?.length ? <div className="main-nav-dropdown main-nav-dropdown--nested">{child.children.map((nested) => <Link key={`${nested.href}-${getNavigationLabel(nested.href)}`} href={nested.href}>{getNavigationLabel(nested.href)}</Link>)}</div> : null}
+                      </div>
                     ))}
                   </div>
                 )}
@@ -152,6 +191,7 @@ export function SiteHeader() {
           </a>
 
           <button
+            ref={menuToggleRef}
             className="mobile-menu-toggle"
             type="button"
             aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}

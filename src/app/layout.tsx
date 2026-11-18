@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/config/site";
 import { organizationJsonLd } from "@/lib/seo";
 import "./globals.scss";
 

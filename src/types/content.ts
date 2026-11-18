@@ -56,10 +56,14 @@ export type PageContentKey =
 export type SiteRoute = {
   path: `/${string}/` | "/";
   contentKey: PageContentKey;
-  crumb: string;
+  /** Human-readable page label used by navigation, headings and breadcrumbs. */
+  label: string;
   title: string;
   description: string;
   image?: string;
+  keywords?: readonly string[];
+  /** Whether this page is ready to be indexed and included in the sitemap. */
+  indexable?: boolean;
 };
 
 export type BreadcrumbItem = {
