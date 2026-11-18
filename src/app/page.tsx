@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Baby, Heart, HousePlus, Stethoscope } from "lucide-react";
 import { getRouteByPath } from "@/routing";
 import { createPageMetadata } from "@/lib/seo";
 import { PHONE_HREF } from "@/config/site";
@@ -7,6 +8,12 @@ import { HOME_FEATURES, HOME_SERVICES } from "@/data/home";
 import styles from "./home.module.scss";
 
 const phoneHref = PHONE_HREF;
+const FEATURE_ICONS = {
+  home: HousePlus,
+  stethoscope: Stethoscope,
+  baby: Baby,
+  heart: Heart,
+} as const;
 const homeRoute = getRouteByPath("/");
 if (!homeRoute) {
   throw new Error("Homepage route is missing from the route registry.");
@@ -62,10 +69,11 @@ export default function HomePage() {
           <ul className={styles.features}>
             {HOME_FEATURES.map((feature) => (
               <li key={feature.title}>
-                <span
-                  className={`${styles.featureIcon} ${feature.tone === "yellow" ? styles.yellow : ""}`}
-                  aria-hidden="true">
-                  {feature.icon}
+                <span className={styles.featureIcon} aria-hidden="true">
+                  {(() => {
+                    const Icon = FEATURE_ICONS[feature.icon];
+                    return <Icon size={36} strokeWidth={1.8} />;
+                  })()}
                 </span>
                 <span>
                   <strong>{feature.title}</strong>
