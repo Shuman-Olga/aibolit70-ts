@@ -170,27 +170,6 @@
 .secondary > span:last-child {
   font-size: 25px;
 }
-.secondary {
-  border: 2px solid #9adcc8;
-  color: #157c70;
-  background: rgba(255, 255, 255, 0.78);
-}
-.secondary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(24, 110, 90, 0.1);
-}
-.doctorIcon {
-  font-size: 30px;
-}
-.phoneNote {
-  margin: 18px 0 0;
-  color: #7a8d88;
-  font-size: 13px;
-}
-.phoneNote a {
-  color: #147e70;
-  font-weight: 800;
-}
 .illustration {
   position: relative;
   min-width: 0;
