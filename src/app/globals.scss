@@ -44,11 +44,13 @@ a {
   gap: 7px;
 }
 .topline-inner {
+  width: min(100% - 40px, 900px);
   height: 39px;
+  margin-inline: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  gap: clamp(28px, 6vw, 76px);
 }
 .header-main {
   min-height: 88px;
@@ -454,6 +456,15 @@ h3 {
   }
 }
 @media (max-width: 600px) {
+  .topline-inner {
+    width: min(100% - 28px, 900px);
+    height: auto;
+    min-height: 39px;
+    padding-block: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 18px;
+  }
   .header-main {
     gap: 12px;
   }
