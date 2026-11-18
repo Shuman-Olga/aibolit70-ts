@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Baby, Heart, HousePlus, Stethoscope } from "lucide-react";
+import { Baby, HousePlus, MapPin, Stethoscope } from "lucide-react";
 import { getRouteByPath } from "@/routing";
 import { createPageMetadata } from "@/lib/seo";
 import { PHONE_HREF } from "@/config/site";
@@ -12,7 +12,7 @@ const FEATURE_ICONS = {
   home: HousePlus,
   stethoscope: Stethoscope,
   baby: Baby,
-  heart: Heart,
+  location: MapPin,
 } as const;
 const homeRoute = getRouteByPath("/");
 if (!homeRoute) {
