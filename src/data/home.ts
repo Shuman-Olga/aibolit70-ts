@@ -4,7 +4,7 @@ export const HOME_FEATURES = [
   { icon: "home", title: "Вызов врача", detail: "Быстро и удобно" },
   { icon: "stethoscope", title: "Консультация", detail: "педиатра" },
   { icon: "baby", title: "Детские", detail: "специалисты" },
-  { icon: "heart", title: "Томск и пригород", detail: "Выезжаем к вам" },
+  { icon: "location", title: "Томск и пригород", detail: "Выезжаем к вам" },
 ] as const;
 
 export const HOME_SERVICES = [
