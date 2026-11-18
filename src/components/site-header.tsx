@@ -145,7 +145,6 @@ export function SiteHeader() {
         <div className="topline">
           <div className="container topline-inner">
             <span><MapPin size={15} /> г. {SITE_ADDRESS.city}, {SITE_ADDRESS.street}</span>
-            <a href={PHONE_HREF}><Phone size={15} /> {SITE_PHONE}</a>
             <span className="hours"><Clock3 size={15} /> {SITE_HOURS.weekdays} · {SITE_HOURS.saturday}</span>
           </div>
         </div>
