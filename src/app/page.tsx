@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getRouteByPath, ROUTES } from "@/routing";
 import { createPageMetadata } from "@/lib/seo";
-import { PHONE_HREF, SITE_PHONE } from "@/config/site";
+import { PHONE_HREF } from "@/config/site";
 import { HOME_FEATURES, HOME_SERVICES } from "@/data/home";
 import styles from "./home.module.scss";
 
@@ -24,9 +24,6 @@ export default function HomePage() {
         </div>
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.copy}>
-            <p className={styles.eyebrow}>
-              <span /> Детская медицинская служба · Томск
-            </p>
             <h1 id="home-title">
               Здоровье
               <br />и забота о вашем
@@ -44,20 +41,7 @@ export default function HomePage() {
                 <span>Вызвать врача</span>
                 <span aria-hidden="true">›</span>
               </a>
-              <Link className={styles.secondary} href={ROUTES.doctors}>
-                <span className={styles.doctorIcon} aria-hidden="true">
-                  ♙
-                </span>
-                <span>
-                  Познакомиться
-                  <br />с врачами
-                </span>
-                <span aria-hidden="true">›</span>
-              </Link>
             </div>
-            <p className={styles.phoneNote}>
-              Позвоните нам: <a href={phoneHref}>{SITE_PHONE}</a>
-            </p>
           </div>
 
           <div className={styles.illustration}>
