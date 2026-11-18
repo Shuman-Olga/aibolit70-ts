@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getRouteByPath, ROUTES } from "@/routing";
+import { getRouteByPath } from "@/routing";
 import { createPageMetadata } from "@/lib/seo";
 import { PHONE_HREF } from "@/config/site";
 import { HOME_FEATURES, HOME_SERVICES } from "@/data/home";
