@@ -6,6 +6,10 @@ on:
       - main
       - feature/mobile-home-hover
       - refactor/unified-route-config
+      - refactor/content-types
+  pull_request:
+    branches:
+      - refactor/unified-route-config
 
 permissions:
   contents: read
