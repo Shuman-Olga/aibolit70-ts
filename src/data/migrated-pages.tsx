@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { PageContentKey } from "@/types/content";
 import type { ContentLink, MigratedPage } from "@/types/migrated-page";
 import { ROUTES } from "@/routing/paths";
