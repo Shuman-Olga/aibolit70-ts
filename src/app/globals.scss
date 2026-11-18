@@ -415,11 +415,11 @@ h3 {
 
 /* Header styling for the illustrated chick identity */
 .header-main {
-  min-height: 112px;
-  gap: 24px;
+  min-height: 76px;
+  gap: 18px;
 }
 .brand {
-  width: 165px;
+  width: 82px;
 }
 .main-nav {
   gap: clamp(12px, 1.7vw, 26px);
@@ -442,10 +442,10 @@ h3 {
   .header-main {
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-block: 15px;
+    padding-block: 8px;
   }
   .brand {
-    width: 170px;
+    width: 85px;
   }
   .main-nav {
     order: 3;
@@ -552,10 +552,10 @@ h3 {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 10px 12px;
-    padding-block: 12px;
+    padding-block: 6px;
   }
   .brand {
-    width: min(100%, 155px);
+    width: min(100%, 77px);
   }
   .phone-link {
     justify-self: end;
@@ -589,7 +589,7 @@ h3 {
 }
 @media (max-width: 380px) {
   .brand {
-    width: 135px;
+    width: 67px;
   }
   .phone-link {
     padding: 8px 9px;
