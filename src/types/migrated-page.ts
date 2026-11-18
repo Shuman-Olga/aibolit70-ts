@@ -1,5 +1,3 @@
-import type { PageContentKey } from "@/types/content";
-
 export type ContentLink = {
   label: string;
   href: string;
@@ -51,4 +49,3 @@ export type MigratedPage = {
   sections?: ContentSection[];
 };
 
-export type MigratedPageKey = PageContentKey;
