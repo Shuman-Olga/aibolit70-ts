@@ -8,7 +8,7 @@ export type NavigationItem = {
 };
 
 /** Shared menu tree for desktop and mobile navigation. */
-export const MAIN_NAVIGATION = [
+export const MAIN_NAVIGATION: readonly NavigationItem[] = [
   {
     href: ROUTES.about,
     children: [
@@ -55,4 +55,4 @@ export const MAIN_NAVIGATION = [
     ],
   },
   { href: ROUTES.contacts },
-] as const satisfies readonly NavigationItem[];
+];
