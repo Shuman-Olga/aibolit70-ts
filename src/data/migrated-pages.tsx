@@ -1,23 +1,7 @@
 import Link from "next/link";
 import type { PageContentKey } from "@/types/content";
+import type { ContentLink, MigratedPage } from "@/types/migrated-page";
 import { ROUTES } from "@/routing/paths";
-
-type ContentLink = { label: string; href: string };
-type ContentSection = {
-  heading?: string;
-  paragraphs?: string[];
-  bullets?: string[];
-  links?: ContentLink[];
-  note?: string;
-};
-type MigratedPage = {
-  intro: string;
-  cards?: { title: string; description: string; href: string; meta?: string; image?: string }[];
-  profile?: { initials: string; role: string; experience: string; specialties: string[]; image?: string };
-  highlights?: { title: string; description: string; mark: string }[];
-  action?: { title: string; description: string; label: string; href: string };
-  sections?: ContentSection[];
-};
 
 const aboutLinks: ContentLink[] = [
   { label: "Контролирующие организации", href: ROUTES.controllingOrganizations },
