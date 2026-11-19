@@ -20,6 +20,7 @@ export type MigratedPageCard = {
 };
 
 export type MigratedPageProfile = {
+  name: string;
   initials: string;
   role: string;
   experience: string;
