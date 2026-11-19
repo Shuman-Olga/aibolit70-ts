@@ -25,7 +25,7 @@ export function MigratedPageContent({ pageKey }: { pageKey: PageContentKey }) {
             <Image
               className="content-profile__photo"
               src={page.profile.image}
-              alt={pageKey === "DoctorSadovnikova" ? "Садовникова Елена Геннадьевна" : pageKey === "DoctorPetuhova" ? "Петухова Ольга Викторовна" : pageKey === "DoctorShevchenko" ? "Шевченко Анастасия Николаевна" : "Остроухова Наталья Петровна"}
+              alt={page.profile.name}
               width={112}
               height={140}
               sizes="(max-width: 760px) 76px, 112px"
