@@ -1,4 +1,5 @@
 import type { ContentLink } from "@/types/migrated-page";
+import { ROUTES } from "@/routing/paths";
 
 export const aboutLinks: ContentLink[] = [
   { label: "Контролирующие организации", href: ROUTES.controllingOrganizations },
