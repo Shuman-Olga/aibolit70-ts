@@ -1175,3 +1175,44 @@
     border-radius: 14px;
   }
 }
+
+
+/* Portal-mounted mobile navigation surfaces */
+.aibolit-mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: block;
+  width: 100vw;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(22, 42, 33, 0.48);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+@media (max-width: 700px) {
+  .aibolit-mobile-drawer {
+    position: fixed;
+    z-index: 2147483001;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    width: min(88vw, 390px);
+    height: 100dvh;
+    min-height: 100dvh;
+    box-sizing: border-box;
+    padding: max(22px, env(safe-area-inset-top)) 22px max(24px, env(safe-area-inset-bottom));
+    overflow-y: auto;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    background: #fff;
+    color: #20352e;
+    box-shadow: -18px 0 55px rgba(20, 48, 34, 0.18);
+  }
+}
