@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import Link from "next/link";
 import { Baby, HousePlus, MapPin, Stethoscope } from "lucide-react";
 import { getRouteByPath } from "@/routing";
+import { ROUTES } from "@/routing/paths";
 import { createPageMetadata } from "@/lib/seo";
 import { PHONE_HREF } from "@/config/site";
 import { HOME_DOCTORS, HOME_FEATURES, HOME_SERVICES } from "@/data/home";
@@ -111,7 +112,7 @@ export default function HomePage() {
           ))}
         </div>
         <div className={styles.doctorsAll}>
-          <Link href="/vrachi/" className={styles.doctorsAllLink}>Все врачи и специалисты <span aria-hidden="true">→</span></Link>
+          <Link href={ROUTES.doctors} className={styles.doctorsAllLink}>Все врачи и специалисты <span aria-hidden="true">→</span></Link>
         </div>
       </section>
 
