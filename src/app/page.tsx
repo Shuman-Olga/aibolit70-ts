@@ -5,7 +5,7 @@ import { Baby, HousePlus, MapPin, Stethoscope } from "lucide-react";
 import { getRouteByPath } from "@/routing";
 import { createPageMetadata } from "@/lib/seo";
 import { PHONE_HREF } from "@/config/site";
-import { HOME_FEATURES, HOME_SERVICES } from "@/data/home";
+import { HOME_DOCTORS, HOME_FEATURES, HOME_SERVICES } from "@/data/home";
 import styles from "./home.module.scss";
 
 const phoneHref = PHONE_HREF;
@@ -87,6 +87,31 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className={`container ${styles.doctorsSection}`} aria-labelledby="doctors-title">
+        <div className={styles.sectionHeading}>
+          <p className={styles.eyebrow}>Наша команда</p>
+          <h2 id="doctors-title">Наши <em>педиатры</em></h2>
+          <p>Опытные детские врачи, которым родители доверяют здоровье своих детей.</p>
+        </div>
+        <div className={styles.doctorsGrid}>
+          {HOME_DOCTORS.map((doctor) => (
+            <article className={styles.doctorCard} key={doctor.href}>
+              <Link href={doctor.href} className={styles.doctorPhotoLink} aria-label={`Подробнее о враче: ${doctor.name}`}>
+                <Image src={doctor.image} alt={doctor.name} width={320} height={360} unoptimized className={styles.doctorPhoto} />
+              </Link>
+              <div className={styles.doctorInfo}>
+                <h3><Link href={doctor.href}>{doctor.name}</Link></h3>
+                <p>{doctor.role}</p>
+                <Link href={doctor.href} className={styles.doctorMore}>Подробнее о враче <span aria-hidden="true">→</span></Link>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className={styles.doctorsAll}>
+          <Link href="/vrachi/" className={styles.doctorsAllLink}>Все врачи и специалисты <span aria-hidden="true">→</span></Link>
         </div>
       </section>
 
