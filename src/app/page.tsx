@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Manrope } from "next/font/google";
 import Link from "next/link";
 import { Baby, HousePlus, MapPin, Stethoscope } from "lucide-react";
 import { getRouteByPath } from "@/routing";
@@ -8,6 +9,7 @@ import { HOME_FEATURES, HOME_SERVICES } from "@/data/home";
 import styles from "./home.module.scss";
 
 const phoneHref = PHONE_HREF;
+const headingFont = Manrope({ subsets: ["cyrillic", "latin"], weight: ["500", "600", "700", "800"], display: "swap" });
 const FEATURE_ICONS = {
   home: HousePlus,
   stethoscope: Stethoscope,
@@ -32,7 +34,7 @@ export default function HomePage() {
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.copy}>
             <p className={styles.eyebrow}>Детская медицинская служба «Айболит» · Томск</p>
-            <h1 id="home-title">
+            <h1 id="home-title" className={headingFont.className}>
               Педиатр на дом
               <br />
               в Томске —
