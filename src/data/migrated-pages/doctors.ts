@@ -1,5 +1,6 @@
 import type { PageContentKey } from "@/types/content";
 import type { MigratedPage } from "@/types/migrated-page";
+import { ROUTES } from "@/routing/paths";
 
 export const doctorsPages: Partial<Record<PageContentKey, MigratedPage>> = {
 Doctors: {
