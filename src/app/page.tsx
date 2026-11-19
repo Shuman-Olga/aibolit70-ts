@@ -32,10 +32,11 @@ export default function HomePage() {
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.copy}>
             <h1 id="home-title">
-              Здоровье
-              <br />и забота о вашем
+              Педиатр на дом
               <br />
-              <em>ребёнке</em>
+              в Томске —
+              <br />
+              забота о ребёнке рядом
             </h1>
             <p className={styles.lead}>
               Педиатр и детские специалисты рядом, когда нужна медицинская
