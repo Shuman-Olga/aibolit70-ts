@@ -6,12 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Clock3, MapPin, Menu, Phone, X, ChevronRight, ChevronDown } from "lucide-react";
 import { MAIN_NAVIGATION, type NavigationItem } from "@/navigation";
-import { routes } from "@/routing/route-registry";
+import { getRouteByPath } from "@/routing/route-resolver";
 import { PHONE_HREF, SITE_ADDRESS, SITE_HOURS, SITE_LOGO, SITE_PHONE } from "@/config/site";
 
 
 function getNavigationLabel(href: NavigationItem["href"]): string {
-  return routes.find((route) => route.path === href)?.label ?? "";
+  return getRouteByPath(href)?.label ?? href;
 }
 
 function NavigationLinks({ items, onNavigate, className }: { items: readonly NavigationItem[]; onNavigate?: () => void; className?: string }) {
