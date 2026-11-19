@@ -43,7 +43,7 @@ export function MigratedPageContent({ pageKey }: { pageKey: PageContentKey }) {
         <div className="content-cards">
           {page.cards.map((card, index) => (
             <Link className="content-card" href={card.href} key={card.href}>
-              {card.image ? <img className="content-card__photo" src={card.image} alt="" loading="lazy" /> : <span className="content-card__index">{String(index + 1).padStart(2, "0")}</span>}
+              {card.image ? <Image className="content-card__photo" src={card.image} alt={card.title} width={640} height={380} sizes="(max-width: 760px) 100vw, 50vw" /> : <span className="content-card__index">{String(index + 1).padStart(2, "0")}</span>}
               {card.meta && <span className="content-card__meta">{card.meta}</span>}
               <h2>{card.title}</h2>
               <p>{card.description}</p>
