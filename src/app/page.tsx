@@ -59,7 +59,7 @@ export default function HomePage() {
           <div className={styles.illustration}>
             <div className={styles.illustrationHalo} />
             <Image
-              src="/chick-doctor-scene.png"
+              src="/images/home/chick-doctor-scene.png"
               alt="Цыплёнок-врач — персонаж детской медицинской службы «Айболит»"
               width={972}
               height={615}
