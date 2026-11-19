@@ -31,6 +31,7 @@ export default function HomePage() {
         </div>
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.copy}>
+            <p className={styles.eyebrow}>Детская медицинская служба «Айболит» · Томск</p>
             <h1 id="home-title">
               Педиатр на дом
               <br />
@@ -39,9 +40,9 @@ export default function HomePage() {
               забота о ребёнке рядом
             </h1>
             <p className={styles.lead}>
-              Педиатр и детские специалисты рядом, когда нужна медицинская
-              помощь. Вызов врача на дом и внимательное отношение к маленьким
-              пациентам.
+              Работаем в Томске с 2001 года. Вызов педиатра и детских
+              специалистов на дом, консультации врачей и программы наблюдения
+              за здоровьем ребёнка.
             </p>
             <div className={styles.actions}>
               <a className={styles.primary} href={phoneHref}>
@@ -56,7 +57,7 @@ export default function HomePage() {
             <div className={styles.illustrationHalo} />
             <Image
               src="/chick-doctor-scene.png"
-              alt="Весёлый цыплёнок в белом халате с фонендоскопом и плюшевым мишкой"
+              alt="Цыплёнок-врач — персонаж детской медицинской службы «Айболит»"
               width={972}
               height={615}
               priority
