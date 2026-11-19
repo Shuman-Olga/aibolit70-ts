@@ -101,7 +101,7 @@ export default function HomePage() {
           {HOME_DOCTORS.map((doctor) => (
             <article className={styles.doctorCard} key={doctor.href}>
               <Link href={doctor.href} className={styles.doctorPhotoLink} aria-label={`Подробнее о враче: ${doctor.name}`}>
-                <Image src={doctor.image} alt={doctor.name} width={320} height={360} unoptimized className={styles.doctorPhoto} />
+                <Image src={doctor.image} alt={doctor.name} width={320} height={360} sizes="(max-width: 720px) 82vw, (max-width: 980px) 42vw, 240px" className={styles.doctorPhoto} />
               </Link>
               <div className={styles.doctorInfo}>
                 <h3><Link href={doctor.href}>{doctor.name}</Link></h3>
