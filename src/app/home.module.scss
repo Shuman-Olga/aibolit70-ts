@@ -1036,3 +1036,28 @@
   .doctorInfo p { font-size: 13px; min-height: 36px; }
   .doctorMore { font-size: 12px; }
 }
+
+/* Accessible interaction states and reduced-motion support */
+.primary:focus-visible,
+.doctorPhotoLink:focus-visible,
+.doctorMore:focus-visible,
+.doctorsAllLink:focus-visible,
+.serviceCard a:focus-visible {
+  outline: 3px solid #e4b94f;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary,
+  .doctorCard,
+  .doctorPhoto,
+  .doctorsAllLink {
+    transition: none;
+  }
+
+  .primary:hover,
+  .doctorCard:hover,
+  .doctorsAllLink:hover {
+    transform: none;
+  }
+}
