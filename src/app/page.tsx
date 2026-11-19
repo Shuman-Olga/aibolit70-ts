@@ -93,7 +93,6 @@ export default function HomePage() {
 
       <section className={`container ${styles.doctorsSection}`} aria-labelledby="doctors-title">
         <div className={styles.sectionHeading}>
-          <p className={styles.eyebrow}>Наша команда</p>
           <h2 id="doctors-title">Наши <em>педиатры</em></h2>
           <p>Опытные детские врачи, которым родители доверяют здоровье своих детей.</p>
         </div>
