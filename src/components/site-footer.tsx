@@ -30,7 +30,7 @@ export function SiteFooter() {
               <Phone size={20} aria-hidden="true" /><span>{SITE_PHONE}</span>
             </a>
           </div>
-          <a className="footer-map" href={mapUrl} target="_blank" rel="noreferrer" aria-label="Открыть расположение Айболита на карте">
+          <div className="footer-map">
             <iframe
               title="Расположение детской медицинской службы «Айболит» в Томске"
               src="https://yandex.ru/map-widget/v1/?text=%D1%83%D0%BB.%20%D0%93%D0%B5%D1%80%D1%86%D0%B5%D0%BD%D0%B0%2068%2C%20%D0%A2%D0%BE%D0%BC%D1%81%D0%BA&z=16"
@@ -38,8 +38,8 @@ export function SiteFooter() {
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
             />
-            <span className="footer-map__label">Мы находимся в Томске</span>
-          </a>
+            <a className="footer-map__label" href={mapUrl} target="_blank" rel="noreferrer">Мы находимся в Томске · Открыть карту</a>
+          </div>
         </div>
       </section>
       <footer className="site-footer site-footer--wave">
