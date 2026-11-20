@@ -110,9 +110,6 @@ export default function HomePage() {
             </article>
           ))}
         </div>
-        <div className={styles.doctorsAll}>
-          <Link href={ROUTES.doctors} className={styles.doctorsAllLink}>Все врачи и специалисты <span aria-hidden="true">→</span></Link>
-        </div>
       </section>
 
       <section
