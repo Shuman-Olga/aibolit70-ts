@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { Manrope } from "next/font/google";
 import Link from "next/link";
-import { Baby, HousePlus, MapPin, Stethoscope } from "lucide-react";
+import { Asterisk, Baby, Heart, HousePlus, MapPin, Plus, Search, Stethoscope } from "lucide-react";
 import { getRouteByPath } from "@/routing";
 import { ROUTES } from "@/routing/paths";
 import { createPageMetadata } from "@/lib/seo";
 import { PHONE_HREF } from "@/config/site";
-import { HOME_DOCTORS, HOME_FEATURES, HOME_SERVICES } from "@/data/home";
+import { HOME_DOCTORS, HOME_FEATURES, HOME_SERVICE_CARDS } from "@/data/home";
 import styles from "./home.module.scss";
 
 const phoneHref = PHONE_HREF;
@@ -112,33 +112,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        className={`container ${styles.services}`}
-        aria-labelledby="services-title">
-        <div className={styles.sectionHeading}>
-          <p className={styles.eyebrow}>Чем мы можем помочь</p>
-          <h2 id="services-title">
-            Забота о здоровье ребёнка —<br />
-            <em>в одном месте</em>
-          </h2>
-          <p>
-            Помогаем родителям заботиться о здоровье детей с вниманием и
-            профессиональным подходом.
-          </p>
+      <section className={`container ${styles.services}`} aria-labelledby="services-title">
+        <div className={styles.servicesHeader}>
+          <h2 id="services-title">Медицинская забота<br />на каждом этапе</h2>
+          <p>От консультации педиатра до регулярного наблюдения —<br className={styles.desktopBreak} /> выберите то, что нужно вашей семье сейчас.</p>
         </div>
         <div className={styles.serviceGrid}>
-          {HOME_SERVICES.map((service) => (
-            <article className={styles.serviceCard} key={service.title}>
-              <span className={styles.serviceIcon} aria-hidden="true">
-                {service.icon}
-              </span>
-              <h3>{service.title}</h3>
-              <p>{service.text}</p>
-              <Link href={service.href}>
-                {service.link} <span aria-hidden="true">→</span>
-              </Link>
-            </article>
-          ))}
+          {HOME_SERVICE_CARDS.map((service) => {
+            const Icon = service.icon === "plus" ? Plus : service.icon === "search" ? Search : service.icon === "heart" ? Heart : Asterisk;
+            return (
+              <article className={styles.serviceCard} key={service.title}>
+                <div className={styles.serviceCardTop}>
+                  <span className={styles.serviceIcon} aria-hidden="true"><Icon size={25} strokeWidth={1.7} /></span>
+                  <span className={styles.serviceNumber}>{service.number}</span>
+                </div>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+                <Link href={service.href}>{service.link}<span aria-hidden="true"> ⟶</span></Link>
+              </article>
+            );
+          })}
         </div>
       </section>
 
