@@ -1232,15 +1232,11 @@
 .footer-map iframe{position:absolute;inset:0;display:block;width:100%;height:100%;border:0}
 .footer-map__label{position:absolute;top:22px;right:22px;max-width:160px;padding:12px 16px;border-radius:15px;background:rgba(255,255,255,.96);color:#174477;box-shadow:0 6px 22px rgba(36,80,94,.12);font-size:13px;font-weight:800;line-height:1.4;pointer-events:none}
 .site-footer--wave{position:relative;margin-top:0;padding:74px 0 28px;background:linear-gradient(110deg,#07999b 0%,#00a4a4 55%,#078f99 100%);color:#fff}
-.site-footer__wave{position:absolute;right:0;bottom:calc(100% - 2px);left:0;display:block;width:100%;height:74px;pointer-events:none}
+.site-footer__wave{position:absolute;top:-72px;right:0;left:0;z-index:2;display:block;width:100%;height:74px;overflow:visible;pointer-events:none}
 .footer-main{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:28px;align-items:center}
-.footer-brand{display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
-.footer-brand img{display:block;width:54px;height:auto;filter:brightness(0) invert(1)}
-.footer-brand__child{display:block;flex:0 0 auto;width:66px;height:66px;color:#fff;filter:drop-shadow(0 3px 8px rgba(0,70,75,.12))}
-.footer-brand:focus-visible .footer-brand__child{filter:drop-shadow(0 0 5px rgba(255,255,255,.45))}
-.footer-brand span{display:grid;gap:2px}
-.footer-brand strong{color:#fff;font-size:27px;font-weight:850;line-height:1}
-.footer-brand small{color:rgba(255,255,255,.9);font-size:10px;white-space:nowrap}
+.footer-brand{display:inline-flex;align-items:center;flex:0 0 auto;color:#fff;text-decoration:none}
+.footer-brand__logo{display:block;width:205px;height:auto;max-width:100%;object-fit:contain}
+.footer-brand img{display:block;width:205px;height:auto;max-width:100%;object-fit:contain}
 .footer-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 20px}
 .footer-nav a{color:#fff;font-size:13px;font-weight:700;text-decoration:none;transition:opacity 160ms ease}
 .footer-nav a:hover{color:#fff;opacity:.75}
@@ -1249,5 +1245,5 @@
 .footer-copyright{display:grid;gap:3px;color:rgba(255,255,255,.92);font-size:10px;line-height:1.45;white-space:nowrap}
 .footer-copyright__name{display:none}
 @media(max-width:1050px){.footer-main{grid-template-columns:1fr auto;gap:24px}.footer-nav{grid-column:1/-1;grid-row:2;justify-content:flex-start}.footer-socials{justify-self:end}.footer-copyright{grid-column:1/-1;grid-row:3}}
-@media(max-width:700px){.footer-contact{padding:38px 0 66px}.footer-contact__inner{grid-template-columns:1fr;gap:26px}.footer-contact__details{gap:15px}.footer-contact__item p{font-size:14px}.footer-contact__phone{width:100%;box-sizing:border-box;font-size:16px}.footer-map{min-height:230px;border-radius:19px}.site-footer--wave{padding:58px 0 24px}.site-footer__wave{height:55px}.footer-main{grid-template-columns:1fr auto;gap:22px 14px}.footer-brand img{width:43px}.footer-brand__child{width:52px;height:52px}.footer-brand strong{font-size:23px}.footer-brand small{font-size:9px}.footer-nav{grid-column:1/-1;grid-row:2;gap:12px 18px}.footer-nav a{font-size:13px}.footer-socials{grid-column:2;grid-row:1}.footer-copyright{grid-column:1/-1;grid-row:3;padding-top:15px;border-top:1px solid rgba(255,255,255,.22);white-space:normal}}
+@media(max-width:700px){.footer-contact{padding:38px 0 66px}.footer-contact__inner{grid-template-columns:1fr;gap:26px}.footer-contact__details{gap:15px}.footer-contact__item p{font-size:14px}.footer-contact__phone{width:100%;box-sizing:border-box;font-size:16px}.footer-map{min-height:230px;border-radius:19px}.site-footer--wave{padding:58px 0 24px}.site-footer__wave{top:-53px;height:55px}.footer-main{grid-template-columns:1fr auto;gap:22px 14px}.footer-brand img{width:176px}.footer-nav{grid-column:1/-1;grid-row:2;gap:12px 18px}.footer-nav a{font-size:13px}.footer-socials{grid-column:2;grid-row:1}.footer-copyright{grid-column:1/-1;grid-row:3;padding-top:15px;border-top:1px solid rgba(255,255,255,.22);white-space:normal}}
 @media(prefers-reduced-motion:reduce){.footer-contact__phone,.footer-nav a{transition:none}}
