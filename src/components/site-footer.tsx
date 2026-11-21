@@ -49,7 +49,13 @@ export function SiteFooter() {
         </svg>
         <div className="container footer-main">
           <Link className="footer-brand" href="/" aria-label="Айболит — главная">
-            <Image src={SITE_LOGO} alt="" width={431} height={147} unoptimized />
+            <svg className="footer-brand__child" viewBox="0 0 72 72" role="img" aria-label="Рисунок улыбающегося ребёнка">
+              <path d="M14 31c-2-12 7-22 21-22s23 10 23 22v11c0 15-10 25-23 25S12 57 12 42V31c0-5 2-9 5-12" fill="none" stroke="currentColor" strokeWidth="2.7" strokeLinecap="round"/>
+              <path d="M17 25c3-2 5-6 6-10 4 4 8 5 13 5 6 0 10-2 14-6 1 5 4 9 8 12" fill="none" stroke="currentColor" strokeWidth="2.7" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M24 39h.5M47 39h.5" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
+              <path d="M27 50c5 6 13 6 18 0" fill="none" stroke="currentColor" strokeWidth="2.7" strokeLinecap="round"/>
+              <path d="M9 34c-5 1-7 6-5 11 2 4 5 5 9 4M63 34c5 1 7 6 5 11-2 4-5 5-9 4" fill="none" stroke="currentColor" strokeWidth="2.7" strokeLinecap="round"/>
+            </svg>
             <span><strong>Айболит</strong><small>Детская медицинская служба</small></span>
           </Link>
           <nav className="footer-nav" aria-label="Навигация в подвале сайта">
