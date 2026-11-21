@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Clock3, MapPin, Phone } from "lucide-react";
+import { ArrowUp, Clock3, MapPin, Phone } from "lucide-react";
 import { ROUTES } from "@/routing/paths";
 import {
   PHONE_HREF, SITE_ADDRESS, SITE_FULL_NAME, SITE_HOURS, SITE_LOGO, SITE_PHONE, SITE_SOCIAL,
@@ -76,8 +76,10 @@ export function SiteFooter() {
           <div className="footer-copyright">
             <span>© 2001–{new Date().getFullYear()} «Айболит».</span>
             <span>Все права защищены.</span>
-            <span className="footer-copyright__name">{SITE_FULL_NAME}</span>
           </div>
+          <a className="footer-back-to-top" href="#top" aria-label="Наверх">
+            <ArrowUp size={20} strokeWidth={2.5} aria-hidden="true" />
+          </a>
         </div>
       </footer>
     </>
