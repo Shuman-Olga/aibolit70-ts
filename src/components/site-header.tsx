@@ -139,7 +139,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="site-header">
+      <header className="site-header" id="top">
         <div className="topline">
           <div className="container topline-inner">
             <span><MapPin size={15} /> г. {SITE_ADDRESS.city}, {SITE_ADDRESS.street}</span>
