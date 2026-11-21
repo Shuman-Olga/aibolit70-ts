@@ -1,9 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUp, Clock3, MapPin, Phone } from "lucide-react";
 import { ROUTES } from "@/routing/paths";
 import {
-  PHONE_HREF, SITE_ADDRESS, SITE_FULL_NAME, SITE_HOURS, SITE_LOGO, SITE_PHONE, SITE_SOCIAL,
+  PHONE_HREF, SITE_ADDRESS, SITE_HOURS, SITE_PHONE, SITE_SOCIAL,
 } from "@/config/site";
 
 const mapUrl = "https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%93%D0%B5%D1%80%D1%86%D0%B5%D0%BD%D0%B0%2068%2C%20%D0%A2%D0%BE%D0%BC%D1%81%D0%BA";
@@ -49,14 +48,16 @@ export function SiteFooter() {
         </svg>
         <div className="container footer-main">
           <Link className="footer-brand" href="/" aria-label="Айболит — главная">
-            <Image
-              className="footer-brand__logo"
-              src={SITE_LOGO}
-              alt="Айболит — детская медицинская служба"
-              width={431}
-              height={147}
-              unoptimized
-            />
+            <svg className="footer-brand__chick" viewBox="0 0 84 76" role="img" aria-label="Цыплёнок в скорлупе">
+              <path d="M23 48c-5-6-7-14-5-22 2-10 11-17 23-17s21 7 23 17c2 8 0 16-5 22" fill="#f6d84b" stroke="#fff" strokeWidth="2.5" strokeLinejoin="round"/>
+              <path d="M38 25l-8-8 1 12z" fill="#e98a9b"/>
+              <circle cx="32" cy="34" r="2.2" fill="#315f49"/><circle cx="51" cy="34" r="2.2" fill="#315f49"/>
+              <path d="M38 40q4 4 8 0" fill="none" stroke="#315f49" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M14 42l-5 10 14-2 8 8 10-8 10 8 8-8 14 2-5-10" fill="#b8dec6" stroke="#fff" strokeWidth="2.5" strokeLinejoin="round"/>
+              <path d="M14 42l9 5 9-5 9 5 9-5 9 5 9-5" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M17 18l-5-6M66 17l5-7M42 5V0" stroke="#b8dec6" strokeWidth="3" strokeLinecap="round"/>
+            </svg>
+            <span><strong>Айболит</strong><small>Детская медицинская служба</small></span>
           </Link>
           <nav className="footer-nav" aria-label="Навигация в подвале сайта">
             <Link href={ROUTES.services}>Услуги</Link>
