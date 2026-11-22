@@ -43,8 +43,8 @@ export function SiteFooter() {
       </section>
       <footer className="site-footer site-footer--wave">
         <svg className="site-footer__wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 48C170 5 250 85 430 54C610 23 690 4 860 43C1030 82 1120 5 1280 25C1350 34 1400 52 1440 42V100H0Z" fill="#b8dec6" />
-          <path d="M0 68C170 25 260 100 450 72C630 45 710 24 880 61C1050 98 1150 30 1300 45C1360 51 1405 69 1440 61V100H0Z" fill="#6fa987" />
+          <path d="M0 48C170 5 250 85 430 54C610 23 690 4 860 43C1030 82 1120 5 1280 25C1350 34 1400 52 1440 42V100H0Z" fill="#1f927f" />
+          <path d="M0 68C170 25 260 100 450 72C630 45 710 24 880 61C1050 98 1150 30 1300 45C1360 51 1405 69 1440 61V100H0Z" fill="#ebf8f1" />
         </svg>
         <div className="container footer-main">
           <Link className="footer-brand" href="/" aria-label="Айболит — главная">
