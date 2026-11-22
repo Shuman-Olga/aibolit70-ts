@@ -42,10 +42,10 @@ export function SiteFooter() {
         </div>
       </section>
       <footer className="site-footer site-footer--wave">
-        <svg className="site-footer__wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 26C105 -8 205 2 315 24C440 50 515 35 625 13C760 -14 845 5 950 25C1070 48 1160 39 1260 18C1340 1 1395 8 1440 22V100H0Z" fill="#BAECDB" />
-          <path d="M0 48C130 17 225 28 340 50C465 75 555 66 670 40C790 13 870 24 985 49C1105 76 1195 64 1295 43C1360 30 1405 35 1440 47V100H0Z" fill="#EBF8F1" />
-          <path d="M0 70C95 48 205 48 310 72C430 100 520 94 640 68C765 41 865 54 970 77C1080 101 1175 92 1275 70C1345 55 1400 59 1440 71V100H0Z" fill="#3CB197" />
+        <svg className="site-footer__wave" viewBox="0 0 1440 130" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 42C85 8 155 4 245 28C335 52 380 78 485 54C590 30 620 -2 735 8C850 18 900 62 1005 48C1110 34 1150 -4 1255 12C1330 24 1385 58 1440 36V130H0Z" fill="#BAECDB" />
+          <path d="M0 70C115 46 190 66 285 92C380 118 460 116 555 80C650 44 720 30 820 52C920 74 980 112 1085 94C1190 76 1270 32 1360 48C1395 54 1420 66 1440 62V130H0Z" fill="#EBF8F1" />
+          <path d="M0 96C90 72 160 88 245 112C330 136 405 126 490 100C575 74 640 70 720 92C800 114 850 142 950 118C1050 94 1115 62 1210 78C1305 94 1365 112 1440 92V130H0Z" fill="#3CB197" />
         </svg>
         <div className="container footer-main">
           <Link className="footer-brand" href="/" aria-label="Айболит — главная">
