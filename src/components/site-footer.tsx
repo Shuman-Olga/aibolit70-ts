@@ -43,8 +43,9 @@ export function SiteFooter() {
       </section>
       <footer className="site-footer site-footer--wave">
         <svg className="site-footer__wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 48C170 5 250 85 430 54C610 23 690 4 860 43C1030 82 1120 5 1280 25C1350 34 1400 52 1440 42V100H0Z" fill="#1f927f" />
-          <path d="M0 68C170 25 260 100 450 72C630 45 710 24 880 61C1050 98 1150 30 1300 45C1360 51 1405 69 1440 61V100H0Z" fill="#ebf8f1" />
+          <path d="M0 18C170 -8 250 43 430 25C610 7 690 0 860 20C1030 40 1120 4 1280 12C1350 16 1400 28 1440 20L1440 38C1400 46 1350 34 1280 30C1120 22 1030 58 860 38C690 18 610 25 430 43C250 61 170 10 0 36Z" fill="#1e917e" />
+          <path d="M0 36C170 10 250 61 430 43C610 25 690 18 860 38C1030 58 1120 22 1280 30C1350 34 1400 46 1440 38L1440 61C1400 69 1350 57 1280 53C1120 45 1030 81 860 61C690 41 610 48 430 66C250 84 170 33 0 59Z" fill="#ebf8f1" />
+          <path d="M0 59C170 33 250 84 430 66C610 48 690 41 860 61C1030 81 1120 45 1280 53C1350 57 1400 69 1440 61L1440 84C1400 92 1350 80 1280 76C1120 68 1030 104 860 84C690 64 610 71 430 89C250 107 170 56 0 82Z" fill="#f0fbf7" />
         </svg>
         <div className="container footer-main">
           <Link className="footer-brand" href="/" aria-label="Айболит — главная">
