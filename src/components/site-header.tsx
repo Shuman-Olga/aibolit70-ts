@@ -176,6 +176,7 @@ export function SiteHeader() {
           <div className="container topline-inner">
             <span><MapPin size={15} /> г. {SITE_ADDRESS.city}, {SITE_ADDRESS.street}</span>
             <span className="hours"><Clock3 size={15} /> {SITE_HOURS.weekdays} · {SITE_HOURS.saturday}</span>
+            <div className="topline-search"><HeaderSearch /></div>
           </div>
         </div>
 
@@ -212,10 +213,6 @@ export function SiteHeader() {
               </div>
             ))}
           </nav>
-
-          <div className="desktop-search">
-            <HeaderSearch />
-          </div>
 
           <a
             className="phone-link"
