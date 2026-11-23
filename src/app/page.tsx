@@ -69,7 +69,6 @@ export default function HomePage() {
                 <ArrowRight size={18} aria-hidden="true" />
               </Link>
             </div>
-            <a className={styles.heroPhone} href="tel:+73822609243">+7 (3822) 60-92-43</a>
           </div>
 
           <div className={styles.illustration}>
