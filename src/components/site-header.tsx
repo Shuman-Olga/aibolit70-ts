@@ -11,7 +11,37 @@ import { routes } from "@/routing/route-registry";
 import { PHONE_HREF, SITE_ADDRESS, SITE_HOURS, SITE_LOGO, SITE_PHONE } from "@/config/site";
 
 
-function HeaderSearch({ onNavigate }: { onNavigate?: () => void }) {\n  const [query, setQuery] = useState("");\n  const results = useMemo(() => {\n    const normalized = query.trim().toLocaleLowerCase("ru");\n    if (normalized.length < 2) return [];\n    return routes\n      .filter((route) => route.path !== "/" && [route.label, route.title, route.description, ...(route.keywords ?? [])].join(" ").toLocaleLowerCase("ru").includes(normalized))\n      .slice(0, 7);\n  }, [query]);\n\n  return (\n    <div className="header-search">\n      <label className="header-search__field">\n        <SearchIcon size={19} aria-hidden="true" />\n        <input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Поиск по сайту" aria-label="Поиск по сайту" />\n        {query && <button type="button" onClick={() => setQuery("")} aria-label="Очистить поиск"><X size={16} /></button>}\n      </label>\n      {query.trim().length >= 2 && (\n        <div className="header-search__results" aria-live="polite">\n          {results.length ? results.map((route) => (\n            <Link key={route.path} href={route.path} onClick={onNavigate}>\n              <span>{route.label}</span><ChevronRight size={16} aria-hidden="true" />\n            </Link>\n          )) : <p>По вашему запросу ничего не найдено</p>}\n        </div>\n      )}\n    </div>\n  );\n}\n\nfunction getNavigationLabel(href: NavigationItem["href"]): string {
+function HeaderSearch({ onNavigate }: { onNavigate?: () => void }) {
+  const [query, setQuery] = useState("");
+  const results = useMemo(() => {
+    const normalized = query.trim().toLocaleLowerCase("ru");
+    if (normalized.length < 2) return [];
+    return routes
+      .filter((route) => route.path !== "/" && [route.label, route.title, route.description, ...(route.keywords ?? [])].join(" ").toLocaleLowerCase("ru").includes(normalized))
+      .slice(0, 7);
+  }, [query]);
+
+  return (
+    <div className="header-search">
+      <label className="header-search__field">
+        <SearchIcon size={19} aria-hidden="true" />
+        <input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Поиск по сайту" aria-label="Поиск по сайту" />
+        {query && <button type="button" onClick={() => setQuery("")} aria-label="Очистить поиск"><X size={16} /></button>}
+      </label>
+      {query.trim().length >= 2 && (
+        <div className="header-search__results" aria-live="polite">
+          {results.length ? results.map((route) => (
+            <Link key={route.path} href={route.path} onClick={onNavigate}>
+              <span>{route.label}</span><ChevronRight size={16} aria-hidden="true" />
+            </Link>
+          )) : <p>По вашему запросу ничего не найдено</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function getNavigationLabel(href: NavigationItem["href"]): string {
   return getRouteByPath(href)?.label ?? href;
 }
 
@@ -120,7 +150,8 @@ export function SiteHeader() {
                 </button>
               </div>
 
-              <div className="mobile-nav-search"><HeaderSearch onNavigate={closeMenu} /></div>\n              <NavigationLinks items={MAIN_NAVIGATION} onNavigate={closeMenu} className="mobile-nav-links" />
+              <div className="mobile-nav-search"><HeaderSearch onNavigate={closeMenu} /></div>
+              <NavigationLinks items={MAIN_NAVIGATION} onNavigate={closeMenu} className="mobile-nav-links" />
 
               <a
                 className="mobile-nav-phone"
