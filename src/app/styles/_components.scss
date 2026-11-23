@@ -1272,7 +1272,8 @@
 .mobile-nav-search .header-search__field{min-height:48px}
 .mobile-nav-search .header-search__field input{font-size:15px}
 .mobile-nav-search .header-search__results{position:static;width:auto;max-height:260px;margin-top:8px;box-shadow:none}
-.desktop-search{display:flex;flex:0 1 210px;min-width:155px;align-items:center}
-.desktop-search .header-search__field{min-height:40px}
-@media(max-width:1150px){.desktop-search{flex-basis:175px;min-width:135px}}
-@media(max-width:980px){.desktop-search{display:none}}
+.topline-search{display:flex;flex:0 1 230px;min-width:180px;align-items:center;margin-left:auto}
+.topline-search .header-search__field{min-height:34px;padding-inline:11px;background:rgba(255,255,255,.72)}
+.topline-search .header-search__field input{font-size:12px}
+@media(max-width:1150px){.topline-search{flex-basis:190px;min-width:150px}}
+@media(max-width:760px){.topline-search{order:3;flex:1 1 100%;min-width:0;margin:4px auto 0;max-width:420px}}
