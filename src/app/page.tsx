@@ -221,7 +221,7 @@ export default function HomePage() {
                   <span>22 ноября 2023</span>
                 </div>
                 <p>«Прекрасный специалист. Ведёт деток с рождения, всегда на связи и объясняет диагноз простым и доступным языком».</p>
-                <strong>Василий З.</strong>
+                <strong>Василий Здвижков</strong>
                 <span className={styles.reviewDoctor}>Отзыв о Петуховой О. В.</span>
               </article>
               <article className={styles.reviewCard}>
@@ -232,7 +232,7 @@ export default function HomePage() {
                   <span>2 марта 2019</span>
                 </div>
                 <p>«Всегда доброжелательная, отзывчивая и внимательная к любым жалобам. Спасибо за многолетний труд и заботу о детях».</p>
-                <strong>Татьяна С.</strong>
+                <strong>Татьяна Солнцева</strong>
                 <span className={styles.reviewDoctor}>Отзыв о Тяпкиной В. И.</span>
               </article>
             </div>
