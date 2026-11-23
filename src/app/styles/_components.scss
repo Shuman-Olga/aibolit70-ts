@@ -15,7 +15,7 @@
   align-items: center;
   gap: 8px;
   padding: 9px 14px;
-  font-size: 11px;
+  font-size: 14px;
   border: 1px solid #c6eade;
   border-radius: 999px;
   background: #e8f8f1;
@@ -30,7 +30,7 @@
     padding-block: 8px;
   }
   .brand {
-    width: 85px;
+    width: 132px;
   }
   .main-nav {
     order: 3;
@@ -54,11 +54,11 @@
     gap: 12px;
   }
   .brand {
-    width: 170px;
+    width: 126px;
   }
   .phone-link {
     padding: 7px 10px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .main-nav {
     justify-content: flex-start;
@@ -140,14 +140,14 @@
     padding-block: 6px;
   }
   .brand {
-    width: min(100%, 77px);
+    width: min(100%, 126px);
   }
   .phone-link {
     justify-self: end;
     margin: 0;
     white-space: nowrap;
-    padding: 7px 10px;
-    font-size: 10px;
+    padding: 8px 11px;
+    font-size: 12px;
   }
   .main-nav {
     grid-column: 1 / -1;
@@ -174,11 +174,11 @@
 }
 @media (max-width: 380px) {
   .brand {
-    width: 67px;
+    width: 108px;
   }
   .phone-link {
     padding: 6px 8px;
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1230,7 +1230,9 @@
 .footer-contact__phone:hover{transform:translateY(-2px);background:#2d6c53;color:#fff;box-shadow:0 10px 24px rgba(45,108,83,.18)}
 .footer-map{position:relative;display:block;min-height:270px;overflow:hidden;border:1px solid #e1f0ef;border-radius:24px;background:#e9f4ed;box-shadow:0 12px 32px rgba(36,110,119,.1)}
 .footer-map iframe{position:absolute;inset:0;display:block;width:100%;height:100%;border:0}
-.footer-map__label{position:absolute;top:22px;right:22px;max-width:160px;padding:12px 16px;border-radius:15px;background:rgba(255,255,255,.96);color:#174477;box-shadow:0 6px 22px rgba(36,80,94,.12);font-size:13px;font-weight:800;line-height:1.4;pointer-events:none}
+.footer-map__label:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(36,80,94,.16)}
+.footer-map__label:focus-visible{outline:3px solid #43866b;outline-offset:4px}
+.footer-map__label{position:absolute;top:22px;right:22px;max-width:190px;padding:12px 16px;border:1px solid rgba(255,255,255,.8);border-radius:15px;background:rgba(255,255,255,.97);color:#174477;box-shadow:0 6px 22px rgba(36,80,94,.12);font-size:13px;font-weight:800;line-height:1.4;text-decoration:none;transition:transform 180ms ease,box-shadow 180ms ease}
 .site-footer--wave{position:relative;margin-top:0;padding:74px 0 28px;background:#3CB197;color:#fff}
 .site-footer__wave{position:absolute;top:-38px;right:0;left:0;z-index:2;display:block;width:100%;height:40px;overflow:visible;pointer-events:none}
 .footer-main{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:28px;align-items:center}
