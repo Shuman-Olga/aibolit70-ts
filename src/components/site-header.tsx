@@ -1,16 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
-import { Clock3, MapPin, Menu, Phone, X, ChevronRight, ChevronDown } from "lucide-react";
+import { Clock3, MapPin, Menu, Phone, X, ChevronRight, ChevronDown, Search as SearchIcon } from "lucide-react";
 import { MAIN_NAVIGATION, type NavigationItem } from "@/navigation";
 import { getRouteByPath } from "@/routing/route-resolver";
+import { routes } from "@/routing/route-registry";
 import { PHONE_HREF, SITE_ADDRESS, SITE_HOURS, SITE_LOGO, SITE_PHONE } from "@/config/site";
 
 
-function getNavigationLabel(href: NavigationItem["href"]): string {
+function HeaderSearch({ onNavigate }: { onNavigate?: () => void }) {\n  const [query, setQuery] = useState("");\n  const results = useMemo(() => {\n    const normalized = query.trim().toLocaleLowerCase("ru");\n    if (normalized.length < 2) return [];\n    return routes\n      .filter((route) => route.path !== "/" && [route.label, route.title, route.description, ...(route.keywords ?? [])].join(" ").toLocaleLowerCase("ru").includes(normalized))\n      .slice(0, 7);\n  }, [query]);\n\n  return (\n    <div className="header-search">\n      <label className="header-search__field">\n        <SearchIcon size={19} aria-hidden="true" />\n        <input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Поиск по сайту" aria-label="Поиск по сайту" />\n        {query && <button type="button" onClick={() => setQuery("")} aria-label="Очистить поиск"><X size={16} /></button>}\n      </label>\n      {query.trim().length >= 2 && (\n        <div className="header-search__results" aria-live="polite">\n          {results.length ? results.map((route) => (\n            <Link key={route.path} href={route.path} onClick={onNavigate}>\n              <span>{route.label}</span><ChevronRight size={16} aria-hidden="true" />\n            </Link>\n          )) : <p>По вашему запросу ничего не найдено</p>}\n        </div>\n      )}\n    </div>\n  );\n}\n\nfunction getNavigationLabel(href: NavigationItem["href"]): string {
   return getRouteByPath(href)?.label ?? href;
 }
 
@@ -119,7 +120,7 @@ export function SiteHeader() {
                 </button>
               </div>
 
-              <NavigationLinks items={MAIN_NAVIGATION} onNavigate={closeMenu} className="mobile-nav-links" />
+              <div className="mobile-nav-search"><HeaderSearch onNavigate={closeMenu} /></div>\n              <NavigationLinks items={MAIN_NAVIGATION} onNavigate={closeMenu} className="mobile-nav-links" />
 
               <a
                 className="mobile-nav-phone"
