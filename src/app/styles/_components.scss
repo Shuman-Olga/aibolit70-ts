@@ -1272,5 +1272,7 @@
 .mobile-nav-search .header-search__field{min-height:48px}
 .mobile-nav-search .header-search__field input{font-size:15px}
 .mobile-nav-search .header-search__results{position:static;width:auto;max-height:260px;margin-top:8px;box-shadow:none}
-@media(max-width:1150px){.desktop-search{flex-basis:175px}}
-@media(max-width:900px){.desktop-search{display:none}}
+.desktop-search{display:flex;flex:0 1 210px;min-width:155px;align-items:center}
+.desktop-search .header-search__field{min-height:40px}
+@media(max-width:1150px){.desktop-search{flex-basis:175px;min-width:135px}}
+@media(max-width:980px){.desktop-search{display:none}}
