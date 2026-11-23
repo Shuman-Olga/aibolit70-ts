@@ -28,8 +28,6 @@ export default function HomePage() {
     <div className={styles.home}>
       <section className={styles.hero} aria-labelledby="home-title">
         <div className={styles.decor} aria-hidden="true">
-          <span className={styles.decorHeart}>♡</span>
-          <span className={styles.decorDot} />
           <span className={styles.decorBlob} />
         </div>
         <div className={`container ${styles.heroInner}`}>
@@ -53,6 +51,10 @@ export default function HomePage() {
                 <span>Вызвать врача</span>
                 <span aria-hidden="true">›</span>
               </a>
+              <Link className={styles.secondary} href={ROUTES.services}>
+                <span>Посмотреть услуги</span>
+                <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </div>
 
