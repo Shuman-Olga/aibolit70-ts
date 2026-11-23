@@ -46,7 +46,6 @@ export default function HomePage() {
         </div>
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.copy}>
-            <p className={styles.eyebrow}>Детская медицинская служба «Айболит» · Томск</p>
             <h1 id="home-title" className={headingFont.className}>
               Педиатр на дом
               <br />
