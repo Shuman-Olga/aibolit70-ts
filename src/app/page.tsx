@@ -2,13 +2,13 @@ import Image from "next/image";
 import { Manrope } from "next/font/google";
 import Link from "next/link";
 import {
-  Asterisk, ArrowRight, Baby, CalendarCheck, CheckCircle2, Heart,
+  Asterisk, ArrowRight, Baby, CalendarCheck, CheckCircle2,
   HousePlus, MapPin, Phone, Plus, Search, Stethoscope,
 } from "lucide-react";
 import { getRouteByPath } from "@/routing";
 import { ROUTES } from "@/routing/paths";
 import { createPageMetadata } from "@/lib/seo";
-import { PHONE_HREF, SITE_PHONE } from "@/config/site";
+import { PHONE_HREF } from "@/config/site";
 import { HOME_DOCTORS, HOME_FEATURES, HOME_SERVICE_CARDS } from "@/data/home";
 import styles from "./home.module.scss";
 
@@ -70,7 +70,7 @@ export default function HomePage() {
                 <ArrowRight size={18} aria-hidden="true" />
               </Link>
             </div>
-            <a className={styles.heroPhone} href={phoneHref}>{SITE_PHONE}</a>
+            <a className={styles.heroPhone} href="tel:+73822609243">+7 (3822) 60-92-43</a>
           </div>
 
           <div className={styles.illustration}>
@@ -84,10 +84,6 @@ export default function HomePage() {
               sizes="(max-width: 760px) 100vw, 58vw"
               className={styles.chickImage}
             />
-            <div className={styles.experienceBadge}>
-              <span className={styles.experienceBadgeIcon}><Heart size={20} fill="currentColor" /></span>
-              <span><strong>С 2001 года</strong><br />заботимся о детях</span>
-            </div>
           </div>
         </div>
 
@@ -111,7 +107,6 @@ export default function HomePage() {
       <section className={`container ${styles.services}`} aria-labelledby="services-title">
         <div className={styles.servicesHeader}>
           <div>
-            <p className={styles.sectionEyebrow}>Чем мы можем помочь</p>
             <h2 id="services-title">Медицинская забота<br />на каждом этапе</h2>
           </div>
           <p>От консультации педиатра до регулярного наблюдения — выберите то, что нужно вашей семье сейчас.</p>
@@ -140,7 +135,6 @@ export default function HomePage() {
       <section className={styles.processSection} aria-labelledby="process-title">
         <div className={`container ${styles.processInner}`}>
           <div className={styles.sectionHeading}>
-            <p className={styles.sectionEyebrow}>Всё просто и понятно</p>
             <h2 id="process-title">Как вызвать <em>врача</em></h2>
             <p>Поможем сориентироваться и организовать визит детского специалиста.</p>
           </div>
@@ -167,7 +161,6 @@ export default function HomePage() {
 
       <section className={`container ${styles.trustSection}`} aria-labelledby="trust-title">
         <div className={styles.trustCopy}>
-          <p className={styles.sectionEyebrow}>Знакомы с заботой не понаслышке</p>
           <h2 id="trust-title">Рядом с семьёй<br /><em>с 2001 года</em></h2>
           <p>«Айболит» — детская медицинская служба в Томске. Помогаем родителям организовать медицинскую помощь ребёнку: от вызова педиатра на дом до консультаций детских специалистов.</p>
           <Link href={ROUTES.about} className={styles.textLink}>Подробнее о службе <ArrowRight size={17} /></Link>
@@ -182,7 +175,6 @@ export default function HomePage() {
 
       <section className={`container ${styles.doctorsSection}`} aria-labelledby="doctors-title">
         <div className={styles.sectionHeading}>
-          <p className={styles.sectionEyebrow}>Специалисты службы</p>
           <h2 id="doctors-title">Наши <em>педиатры</em></h2>
           <p>Познакомьтесь с врачами, которые заботятся о здоровье детей.</p>
         </div>
@@ -215,7 +207,6 @@ export default function HomePage() {
 
       <section className={`container ${styles.faqSection}`} aria-labelledby="faq-title">
         <div className={styles.faqIntro}>
-          <p className={styles.sectionEyebrow}>Подскажем и поможем</p>
           <h2 id="faq-title">Частые <em>вопросы</em></h2>
           <p>Коротко ответили на то, что родители часто хотят узнать перед обращением.</p>
           <Link href={ROUTES.contacts} className={styles.textLink}>Контакты службы <ArrowRight size={17} /></Link>
