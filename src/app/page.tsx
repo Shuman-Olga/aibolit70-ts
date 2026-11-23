@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Manrope } from "next/font/google";
 import Link from "next/link";
 import {
-  Asterisk, ArrowRight, Baby, CalendarCheck, CheckCircle2,
+  Asterisk, ArrowRight, Baby, CalendarCheck, CheckCircle2, Heart,
   HousePlus, MapPin, Phone, Plus, Search, Stethoscope,
 } from "lucide-react";
 import { getRouteByPath } from "@/routing";
