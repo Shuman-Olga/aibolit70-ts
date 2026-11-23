@@ -213,6 +213,10 @@ export function SiteHeader() {
             ))}
           </nav>
 
+          <div className="desktop-search">
+            <HeaderSearch />
+          </div>
+
           <a
             className="phone-link"
             href={PHONE_HREF}
