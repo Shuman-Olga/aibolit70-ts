@@ -498,7 +498,7 @@
 }
 .bottomCta {
   padding: 52px 0;
-  background: linear-gradient(110deg, #eaf8f1, #f8fbed);
+  background: linear-gradient(110deg, #eaf6ef 0%, #f3faf6 100%);
 }
 .bottomCtaInner {
   display: flex;
@@ -1192,7 +1192,7 @@
 }
 .processSection {
   padding: 82px 0 86px;
-  background: linear-gradient(180deg, #f3faf6 0%, #f8fcf9 100%);
+  background: linear-gradient(180deg, #edf8f2 0%, #f5faf7 100%);
 }
 .processInner {
   max-width: 1240px;
@@ -1329,9 +1329,23 @@
   line-height: 1.45;
 }
 .doctorsSection {
+  position: relative;
+  isolation: isolate;
   padding-top: 78px;
   padding-bottom: 88px;
   border-top: 1px solid #edf4ef;
+}
+
+.doctorsSection::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  background: #f8fbf9;
+  content: "";
+  transform: translateX(-50%);
 }
 .doctorsSection .sectionHeading {
   margin-bottom: 34px;
@@ -1635,7 +1649,7 @@
 /* Homepage testimonials and clinic rating */
 .reviewsSection {
   padding: 84px 0;
-  background: linear-gradient(135deg, #f0faf5 0%, #f8fcf9 58%, #e8f7ef 100%);
+  background: linear-gradient(135deg, #f0f9f4 0%, #f7fbf8 58%, #eaf6ef 100%);
 }
 .reviewsInner {
   display: grid;
