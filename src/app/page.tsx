@@ -60,7 +60,7 @@ export default function HomePage() {
             </p>
             <div className={styles.actions}>
               <a className={styles.primary} href={phoneHref}>
-                <Phone size={19} aria-hidden="true" />
+                <CalendarCheck size={19} aria-hidden="true" />
                 <span>Вызвать врача</span>
                 <ArrowRight size={19} aria-hidden="true" />
               </a>
