@@ -1793,3 +1793,11 @@
   .reviewCards { grid-template-columns: 1fr; }
   .reviewCard { min-height: 190px; }
 }
+
+
+/* Keep the mobile first screen focused on the message and actions */
+@media (max-width: 720px) {
+  .illustration {
+    display: none;
+  }
+}
