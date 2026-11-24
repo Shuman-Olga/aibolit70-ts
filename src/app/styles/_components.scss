@@ -1277,3 +1277,50 @@
 .topline-search .header-search__field input{font-size:12px}
 @media(max-width:1150px){.topline-search{flex-basis:190px;min-width:150px}}
 @media(max-width:760px){.topline-search{display:none}}
+
+
+/* Compact header layout on narrow mobile screens */
+@media (max-width: 700px) {
+  .header-main {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 68px;
+    padding-block: 8px;
+  }
+
+  .brand {
+    width: 120px;
+    min-width: 0;
+  }
+
+  .phone-link {
+    flex: 0 1 auto;
+    padding: 7px 9px;
+    font-size: 12px;
+  }
+
+  .mobile-menu-toggle {
+    flex: 0 0 42px;
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    padding: 7px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-main {
+    gap: 8px;
+  }
+
+  .brand {
+    width: 112px;
+  }
+
+  .header-main > .phone-link {
+    display: none;
+  }
+}
