@@ -24,7 +24,6 @@ export function HomeHero() {
                 <div className={styles.copy}>
                   <h1 id="home-title" className={headingFont.className}>
                     Педиатр на дом в Томске —
-                    <br />
                     внимательная забота о здоровье ребёнка
                   </h1>
                   <p className={styles.lead}>
@@ -33,11 +32,11 @@ export function HomeHero() {
                     за здоровьем ребёнка.
                   </p>
                   <div className={styles.actions}>
-                    <span className={styles.primary} aria-disabled="true">
+                    <Link className={styles.primary} href={ROUTES.pediatricianHome}>
                       <CalendarCheck size={19} aria-hidden="true" />
-                      <span>Вызвать врача</span>
+                      <span>Оставить заявку</span>
                       <ArrowRight size={19} aria-hidden="true" />
-                    </span>
+                    </Link>
                     <Link className={styles.secondary} href={ROUTES.services}>
                       <span>Посмотреть услуги</span>
                       <ArrowRight size={18} aria-hidden="true" />
