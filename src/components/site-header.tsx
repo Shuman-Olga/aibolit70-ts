@@ -139,7 +139,7 @@ export function SiteHeader() {
               role="dialog"
             >
               <div className="mobile-nav-heading">
-                <span id="mobile-navigation-title">Меню сайта</span>
+                <span id="mobile-navigation-title">Навигация по сайту</span>
                 <button
                   className="mobile-nav-close"
                   type="button"
@@ -231,7 +231,7 @@ export function SiteHeader() {
             onClick={() => setMenuOpen((open) => !open)}
           >
             {menuOpen ? <X size={25} /> : <Menu size={25} />}
-            <span>{menuOpen ? "Закрыть" : "Меню"}</span>
+            
           </button>
         </div>
       </header>
