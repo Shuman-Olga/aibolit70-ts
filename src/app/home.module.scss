@@ -1913,3 +1913,33 @@
     font-size: 29px;
   }
 }
+
+
+/* Mobile doctors: one full-width card per row */
+@media (max-width: 720px) {
+  .doctorsGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .doctorPhotoLink {
+    aspect-ratio: 16 / 9;
+  }
+
+  .doctorInfo {
+    padding: 16px 18px 18px;
+  }
+
+  .doctorInfo h3 {
+    font-size: 16px;
+  }
+
+  .doctorInfo p {
+    min-height: 0;
+    margin-bottom: 12px;
+  }
+
+  .doctorMore {
+    font-size: 13px;
+  }
+}
