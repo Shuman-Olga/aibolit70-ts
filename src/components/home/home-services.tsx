@@ -9,7 +9,7 @@ export function HomeServices() {
       <section className={`container ${styles.services}`} aria-labelledby="services-title">
               <div className={styles.servicesHeader}>
                 <div>
-                  <h2 id="services-title">Медицинская забота<br />на каждом этапе</h2>
+                  <h2 id="services-title">Забота о здоровье ребёнка</h2>
                 </div>
                 <p>От консультации педиатра до регулярного наблюдения — выберите то, что нужно вашей семье сейчас.</p>
               </div>
