@@ -23,11 +23,9 @@ export function HomeHero() {
               <div className={`container ${styles.heroInner}`}>
                 <div className={styles.copy}>
                   <h1 id="home-title" className={headingFont.className}>
-                    Педиатр на дом
+                    Педиатр на дом в Томске —
                     <br />
-                    в Томске —
-                    <br />
-                    забота о ребёнке рядом
+                    внимательная забота о здоровье ребёнка
                   </h1>
                   <p className={styles.lead}>
                     Работаем в Томске с 2001 года. Вызов педиатра и детских
