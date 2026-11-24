@@ -171,13 +171,6 @@
   transform: translateY(-3px);
   box-shadow: 0 16px 30px rgba(24, 137, 116, 0.25);
 }
-.primary > span:first-child {
-  font-size: 25px;
-}
-.primary > span:last-child,
-.secondary > span:last-child {
-  font-size: 25px;
-}
 .illustration {
   position: relative;
   min-width: 0;
@@ -763,11 +756,6 @@
     padding: 10px 13px;
     gap: 8px;
     font-size: 13px;
-  }
-  .primary > span:first-child,
-  .primary > span:last-child,
-  .secondary > span:last-child {
-    font-size: 20px;
   }
   .secondary {
     border-width: 1px;
