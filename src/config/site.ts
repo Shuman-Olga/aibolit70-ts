@@ -17,8 +17,8 @@ export const SITE = {
     vk: "https://vk.com/aibolittomsk",
   },
   assets: {
-    defaultOgImage: "/chick-doctor-scene.png",
-    homeHero: "/chick-doctor-scene.png",
+    defaultOgImage: "/images/home/chick-doctor-scene.png",
+    homeHero: "/images/home/chick-doctor-scene.png",
   },
 } as const;
 
