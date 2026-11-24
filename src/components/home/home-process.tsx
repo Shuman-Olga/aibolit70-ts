@@ -35,7 +35,7 @@ export function HomeProcess() {
         </ol>
         <div className={styles.processAction}>
           <a className={styles.primary} href={phoneHref}><Phone size={18} /> Позвонить в «Айболит» <ArrowRight size={18} /></a>
-          <a className={styles.secondary} href={ROUTES.pediatricianHome}><ClipboardList size={18} /> Отправить форму вызова врача</a>
+          <a className={styles.secondary} href={ROUTES.pediatricianHome}><ClipboardList size={18} /> Оставить заявку</a>
         </div>
       </div>
     </section>
