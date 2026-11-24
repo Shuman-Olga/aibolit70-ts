@@ -59,11 +59,11 @@ export default function HomePage() {
               за здоровьем ребёнка.
             </p>
             <div className={styles.actions}>
-              <a className={styles.primary} href={phoneHref}>
+              <span className={styles.primary} aria-disabled="true">
                 <CalendarCheck size={19} aria-hidden="true" />
                 <span>Вызвать врача</span>
                 <ArrowRight size={19} aria-hidden="true" />
-              </a>
+              </span>
               <Link className={styles.secondary} href={ROUTES.services}>
                 <span>Посмотреть услуги</span>
                 <ArrowRight size={18} aria-hidden="true" />
