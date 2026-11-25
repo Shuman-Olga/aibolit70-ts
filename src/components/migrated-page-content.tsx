@@ -13,7 +13,7 @@ export function MigratedPageContent({ pageKey }: { pageKey: PageContentKey }) {
     <div className={["migrated-content", isOverview ? "migrated-content--overview" : "", page.profile ? "migrated-content--profile" : "", pageKey.startsWith("Program") ? "migrated-content--program" : ""].filter(Boolean).join(" ")}>
       <section className="content-hero">
         <div className="content-hero__copy">
-          <span className="content-hero__eyebrow">Детская медицинская служба · Томск</span>
+          {pageKey !== "About" && <span className="content-hero__eyebrow">Детская медицинская служба · Томск</span>}
           <p className="lead">{page.intro}</p>
         </div>
         <span className="content-hero__decor" aria-hidden="true">✳</span>
