@@ -134,12 +134,10 @@ export function SiteHeader() {
               className="aibolit-mobile-drawer mobile-nav-panel"
               id="mobile-navigation"
               aria-label="Мобильная навигация"
-              aria-labelledby="mobile-navigation-title"
               aria-modal="true"
               role="dialog"
             >
-              <div className="mobile-nav-heading">
-                <span id="mobile-navigation-title">Навигация по сайту</span>
+              <div className="mobile-nav-heading mobile-nav-heading--compact">
                 <button
                   className="mobile-nav-close"
                   type="button"
