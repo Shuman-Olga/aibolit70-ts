@@ -16,7 +16,17 @@ export function MigratedPageContent({ pageKey }: { pageKey: PageContentKey }) {
           {pageKey !== "About" && <span className="content-hero__eyebrow">Детская медицинская служба · Томск</span>}
           <p className="lead">{page.intro}</p>
         </div>
-        <span className="content-hero__decor" aria-hidden="true">✳</span>
+        {pageKey === "About" ? (
+          <Image
+            className="content-hero__chick"
+            src="/images/home/chick-doctor-scene.png"
+            alt="Цыплёнок — символ детской медицинской службы «Айболит»"
+            width={360}
+            height={330}
+            priority
+            sizes="(max-width: 760px) 180px, 300px"
+          />
+        ) : <span className="content-hero__decor" aria-hidden="true">✳</span>}
       </section>
 
       {page.profile && (
