@@ -1324,3 +1324,39 @@
     display: none;
   }
 }
+
+
+/* About page: mascot illustration in the intro hero */
+.migrated-content--overview .content-hero:has(.content-hero__chick) {
+  min-height: 270px;
+  padding-right: clamp(250px, 31vw, 390px);
+}
+.content-hero__chick {
+  position: absolute;
+  right: clamp(16px, 4vw, 48px);
+  bottom: -8px;
+  display: block;
+  width: clamp(210px, 27vw, 330px);
+  height: auto;
+  max-height: 290px;
+  object-fit: contain;
+  object-position: center bottom;
+  z-index: 0;
+}
+@media (max-width: 760px) {
+  .migrated-content--overview .content-hero:has(.content-hero__chick) {
+    min-height: 0;
+    padding: 24px 20px 10px;
+  }
+  .migrated-content--overview .content-hero:has(.content-hero__chick) .content-hero__copy {
+    max-width: 100%;
+  }
+  .content-hero__chick {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: min(190px, 58vw);
+    max-height: 170px;
+    margin: 8px auto -2px;
+  }
+}
