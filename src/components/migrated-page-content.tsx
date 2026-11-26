@@ -19,8 +19,8 @@ export function MigratedPageContent({ pageKey }: { pageKey: PageContentKey }) {
         {pageKey === "About" ? (
           <Image
             className="content-hero__chick"
-            src="/images/home/chick-doctor-scene.png"
-            alt="Цыплёнок — символ детской медицинской службы «Айболит»"
+            src="/images/about/chick-in-shell.webp"
+            alt="Цыплёнок в скорлупе — символ детской медицинской службы «Айболит»"
             width={360}
             height={330}
             priority
