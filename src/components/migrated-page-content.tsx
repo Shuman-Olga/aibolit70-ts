@@ -17,15 +17,11 @@ export function MigratedPageContent({ pageKey }: { pageKey: PageContentKey }) {
           <p className="lead">{page.intro}</p>
         </div>
         {pageKey === "About" ? (
-          <Image
-            className="content-hero__chick"
-            src="/images/about/chick-in-shell.webp"
-            alt="Цыплёнок в скорлупе — символ детской медицинской службы «Айболит»"
-            width={360}
-            height={330}
-            priority
-            sizes="(max-width: 760px) 180px, 300px"
-          />
+          <div className="content-hero__abstract" aria-hidden="true">
+            <span className="content-hero__abstract-orbit" />
+            <span className="content-hero__abstract-dot" />
+            <span className="content-hero__abstract-leaf" />
+          </div>
         ) : <span className="content-hero__decor" aria-hidden="true">✳</span>}
       </section>
 
