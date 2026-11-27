@@ -158,9 +158,6 @@ export function SiteHeader() {
               >
                 <Phone size={18} /> {SITE_PHONE}
               </a>
-              <p className="mobile-nav-caption">
-                Детская медицинская служба «Айболит» · Томск
-              </p>
             </nav>
           </>,
           document.body,
